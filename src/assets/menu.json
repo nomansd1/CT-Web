@@ -1,0 +1,58 @@
+{
+    "menu": [
+      {
+        "title": "HR",
+        "icon": "fa-regular fa-folder",
+        "url": "/hr",
+        "subMenus": [
+          {
+            "title": "Employee Management",
+            "url": "/hr/employee-management"
+          },
+          {
+            "title": "Payroll",
+            "url": "/hr/payroll"
+          },
+          {
+            "title": "Time and Attendance",
+            "url": "/hr/time-and-attendance"
+          }
+        ]
+      },
+      {
+        "title": "Accounts",
+        "icon": "fa-regular fa-folder",
+        "url": "/accounts",
+        "subMenus": [
+          {
+            "title": "Invoicing",
+            "url": "/accounts/invoicing"
+          },
+          {
+            "title": "Expenses",
+            "url": "/accounts/expenses"
+          },
+          {
+            "title": "Accounts Payable",
+            "url": "/accounts/accounts-payable"
+          }
+        ]
+      },
+      {
+        "title": "Business Partner",
+        "icon": "fa-regular fa-handshake",
+        "url": "/business-partner",
+        "subMenus": [
+          {
+            "title": "Suppliers",
+            "url": "/business-partner/suppliers"
+          },
+          {
+            "title": "Customers",
+            "url": "/business-partner/customers"
+          }
+        ]
+      }
+    ]
+  }
+  

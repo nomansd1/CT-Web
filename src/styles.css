@@ -1,1 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import '@angular/material/prebuilt-themes/indigo-pink.css'; */
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Comfortaa';
+}
+body {
+    background-color: #ECEDFF;
+}
+div.mat-expansion-panel-body {
+    padding: 0 !important;
+}
+.mat-content.mat-content-hide-toggle {
+    margin-right: 0 !important;
+}

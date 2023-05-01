@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Angular Tutorial",
+        "link": "https://www.angular.io/tutorial",
+        "type": "Tutorial"
+    },
+    {
+        "title": "Angular Blog",
+        "link": "https://www.angular.io/blog",
+        "type": "Blog"
+    },
+    {
+        "title": "Angular API Reference",
+        "link": "https://angular.io/api",
+        "type": "Reference"
+    },
+    {
+        "title": "React Tutorial",
+        "link": "https://reactjs.org/tutorial",
+        "type": "Tutorial"
+    },
+    {
+        "title": "React Blog",
+        "link": "https://reactjs.org/blog",
+        "type": "Blog"
+    },
+    {
+        "title": "React API Reference",
+        "link": "https://reactjs.org/docs/react-api.html",
+        "type": "Reference"
+    },
+    {
+        "title": "Vue.js Tutorial",
+        "link": "https://vuejs.org/v2/guide/",
+        "type": "Tutorial"
+    },
+    {
+        "title": "Vue.js Blog",
+        "link": "https://vuejs.org/v2/guide/",
+        "type": "Blog"
+    },
+    {
+        "title": "Vue.js API Reference",
+        "link": "https://vuejs.org/v2/api/",
+        "type": "Reference"
+    }
+]

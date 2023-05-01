@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CT-Web';
+  sidebarVisible = false;
+
+  constructor(public router: Router) {}
+
+  onToggleSidebar() {
+    this.sidebarVisible = !this.sidebarVisible;
+    console.log('sidebarVisible:', this.sidebarVisible);
+  }
 }

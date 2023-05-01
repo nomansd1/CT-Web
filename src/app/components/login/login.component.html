@@ -1,0 +1,70 @@
+<div *ngIf="loading" class="loader">
+    <div class="inner-loader">
+        <div class="loader1"></div>
+    </div>
+</div>
+<div class="flex col-span-12 h-[100vh] overflow-hidden">
+    <div class="hidden lg:flex lg:flex-col lg:col-span-6 loginLeft_panel items-center justify-center relative">
+        <img src="../../assets/images/login2.svg" alt="" srcset="" class="animate__bounceInUp -ml-5 -mt-20">
+        <div class="-mt-20 mx-auto w-[80%]">
+            <h1 class="text-3xl font-extrabold text-white">Our philosophy is simple</h1>
+            <h1 class="text-xl font-semibold text-white">Streamline your operations with our solutions.</h1>
+        </div>
+        <div class="absolute bottom-[20px] left-[65px]">
+            <p class="font-semibold text-white text-sm">2023 © Cloud Tenants</p>
+        </div>
+    </div>
+    <div class="col-span-12 lg:col-span-6 w-[100%] lg:w-[50%] flex justify-center items-center">
+        <div class="text-center bg-red- w-[80%] mx-auto">
+            <h1 class="text-3xl font-bold">Welcome To</h1>
+            <h1 class="text-4xl font-bold mt-2">Cloud<span class="text-[#00aff0] ml-1">Tenants</span></h1>
+            <form (ngSubmit)="login()">
+                <div *ngIf="signIn" class="animate__bounceInRight max-w-lg lg:max-w-md mt-4 bg-white border-b-4 border-b-[#2070e9] rounded-xl shadow p-4 mx-auto">
+                    <h1 class="text-2xl font-medium text-left ml-2">Sign in</h1>
+                    <h2 *ngIf="errorMessage" class="text-xs font-semibold bg-[#fd4444] text-white w-fit mt-1 px-3 py-1 rounded-full">Invalid Credentials</h2>
+                    <div class="form_element w-full p-2 relative">
+                        <input type="text" [(ngModel)]="email" name="email" required placeholder="Email" class="w-full p-2 active:outline-none focus:outline-none border-[#2070e9] border-b-2 rounded-md">
+                        <div class="validation text-xs absolute top-[50%] right-[0.5rem]">Required</div>
+                    </div>
+                    <div class="form_element w-full p-2 mt-1 relative">
+                        <input type="password" [(ngModel)]="password" name="password" required placeholder="Password" class="w-full p-2 active:outline-none focus:outline-none border-[#2070e9] border-b-2 rounded-md">
+                        <div class="validation text-xs absolute top-[50%] right-[0.5rem]">Required</div>
+                    </div>
+                    <div class="flex justify-between items-center mt-2 px-2">
+                        <div class="flex justify-between items-center">
+                            <input type="checkbox" name="" id="">
+                            <span class="text-sm font-medium ml-2">Remember me?</span>
+                        </div>
+                        <div>
+                            <a (click)="hideSignin()" class="cursor-pointer text-sm text-[#007bff] font-medium hover:underline">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="bg-[#2070e9] w-[80%] text-white font-medium p-2 rounded-3xl mt-5 focus:ring-2 focus:ring-[#2680ff] hover:bg-[#2680ff]">Sign in</button>
+                </div>
+            </form>
+            <div *ngIf="forgotPass" class="animate__bounceInUp w-full lg:max-w-md mt-4 bg-white border-b-4 border-b-[#2070e9] rounded-xl shadow p-4 mx-auto">
+                <h1 class="text-2xl font-medium text-left ml-2">Retrieve your password!</h1>
+                <div class="w-full p-2">
+                    <select class="w-full p-2 active:outline-none focus:outline-none border-[#2070e9] border-b-2 rounded-md">
+                        <option value="" class="!hover:bg-[#F2F2F2]" disabled selected>Choose your retrieval method</option>
+                        <option value="" class="!bg-[#F2F2F2] p-2">Email</option>
+                    </select>
+                </div>
+                <div class="form_element w-full p-2 mt-1 relative">
+                    <input type="text" required placeholder="Email" class="w-full p-2 active:outline-none focus:outline-none border-[#2070e9] border-b-2 rounded-md">
+                    <div class="validation text-xs absolute top-[50%] right-[0.5rem]">Required</div>
+                </div>
+                <div class="flex justify-between items-center mt-2">
+                    <div>
+                        <a (click)="showSignin()" class="cursor-pointer text-sm text-[#007bff] font-medium hover:underline">Sign in to your existing account?</a>
+                    </div>
+                </div>
+                <div class="flex text-left mt-2 bg-[#F2F2F2] p-3 rounded-md">
+                    <p class="font-medium text-xs">NOTE: Please check your spam / junk folder if you haven't received an email from us after clicking 'Retrieve Password'. Alternatively, if you have forgotten your email address please create a new account</p>
+                </div>
+                <button class="bg-[#2070e9] w-[80%] text-white font-medium p-2 rounded-3xl mt-5 focus:ring-2 focus:ring-[#2680ff] hover:bg-[#2680ff]">Sign in</button>
+            </div>
+        </div>
+        <div></div>
+    </div>
+</div>

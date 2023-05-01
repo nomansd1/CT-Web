@@ -1,0 +1,30 @@
+<div class="fixed top-[-100%] w-[225px] h-screen bg-[black] text-white select-none transition-all duration-500 ease-in-out"  [ngClass]="{'top-[48px]': sidebarVisible}">
+    <ul>
+        <li *ngFor="let item of allResults; let i = index;" (click)="toggleAccordion(i)">
+            <mat-accordion mutli="false">
+                <mat-expansion-panel hideToggle [expanded]="expandedIndex === i">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="hover:bg-[#2070e9] !w-full flex items-center py-2.5 pl-7 pr-3 justify-between">
+                            <div class="flex items-center">
+                                <i class={{item.icon}}></i>
+                                <span class="text-xs ml-3">{{item.title}}</span>
+                            </div>
+                            <i *ngIf="hideToggle; else dropup;" class="fa fa-angle-down text-xs"></i>
+                            <ng-template #dropup>
+                                <i class="fa fa-angle-up text-xs"></i>
+                            </ng-template>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul class="list-none">
+                        <li *ngFor="let subMenu of item.subMenus">
+                            <a href="" class="flex justify-between items-center text-xs hover:bg-[#2070e9] py-1.5 pl-7 pr-3">
+                                <span> {{subMenu.title}} </span>
+                                <i class="fa fa-link"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </li>
+    </ul>
+</div>

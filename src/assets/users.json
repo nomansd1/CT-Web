@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "email": "user1@example.com",
+      "password": "password1",
+      "token": "token1",
+      "tokenExpiration": "2023-05-21 10:58:00"
+    },
+    {
+      "email": "user2@example.com",
+      "password": "password2",
+      "token": "token2",
+      "tokenExpiration": "2023-04-13 14:34:56"
+    }
+  ]
+}

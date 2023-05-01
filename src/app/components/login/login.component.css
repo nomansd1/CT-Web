@@ -1,0 +1,181 @@
+.loginLeft_panel {
+    background: url("../../../assets/images/bg-login.svg");
+    height: 100vh;
+    width: 50%;
+    background-size: auto 100%;
+    background-position: right;
+}
+
+@keyframes bounceInUp {
+    0%,60%,75%,90%,to {
+        -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,3000px,0) scaleY(5);
+        transform: translate3d(0,3000px,0) scaleY(5)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0,-20px,0) scaleY(.9);
+        transform: translate3d(0,-20px,0) scaleY(.9)
+    }
+
+    75% {
+        -webkit-transform: translate3d(0,10px,0) scaleY(.95);
+        transform: translate3d(0,10px,0) scaleY(.95)
+    }
+
+    90% {
+        -webkit-transform: translate3d(0,-5px,0) scaleY(.985);
+        transform: translate3d(0,-5px,0) scaleY(.985)    }
+
+    to {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+}
+
+.animate__bounceInUp {
+    -webkit-animation-name: bounceInUp;
+    animation-name: bounceInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+@keyframes bounceInRight {
+    0%,60%,75%,90%,to {
+        -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(3000px,0,0) scaleX(3);
+        transform: translate3d(3000px,0,0) scaleX(3)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(-25px,0,0) scaleX(1);
+        transform: translate3d(-25px,0,0) scaleX(1)
+    }
+
+    75% {
+        -webkit-transform: translate3d(10px,0,0) scaleX(.98);
+        transform: translate3d(10px,0,0) scaleX(.98)
+    }
+
+    90% {
+        -webkit-transform: translate3d(-5px,0,0) scaleX(.995);
+        transform: translate3d(-5px,0,0) scaleX(.995)
+    }
+
+    to {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+}
+
+.animate__bounceInRight {
+    -webkit-animation-name: bounceInRight;
+    animation-name: bounceInRight;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+.validation {
+    transform: translate(5rem, -58%);
+    color: #fd4444;
+    opacity: 0;
+    transition: all 0.35s;
+}
+.form_element input:invalid {
+    border-color: #fd4444;
+}
+.form_element input:invalid ~ .validation {
+    opacity: 1;
+    transform: translate(0, -50%);
+}
+/* loading animation */
+.loader {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1111;
+    overflow-x: hidden;
+    background: rgba(0, 0, 0, .7);
+}
+.inner-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+.loader1 {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: #A9A9A9;
+    border-radius: 50%;
+}
+
+    .loader1:after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        border: 0px solid white;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-animation: loading 1000ms ease-out forwards infinite;
+        animation: loading 1000ms ease-out forwards infinite;
+    }
+
+@-webkit-keyframes loading {
+    0% {
+        border: 0px solid white;
+    }
+
+    20% {
+        border: 8px solid white;
+        width: 0%;
+        height: 0%;
+    }
+
+    100% {
+        border: 8px solid white;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes loading {
+    0% {
+        border: 0px solid white;
+    }
+
+    20% {
+        border: 8px solid white;
+        width: 0%;
+        height: 0%;
+    }
+
+    100% {
+        border: 8px solid white;
+        width: 100%;
+        height: 100%;
+    }
+}

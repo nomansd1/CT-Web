@@ -1,0 +1,100 @@
+<header
+    class="sticky top-0 z-50 flex flex-wrap items-center justify-between items-center header_bx px-4 py-2 shadow-md shadow-slate-900/5 transition duration-500 sm:px-6 lg:px-8">
+    <div class="relative flex flex-grow basis-0 items-center">
+        <button class="bg-white rounded-full p-1" (click)="onToggleSidebar()">
+            <img class="h-6 w-6 stroke-slate-500" src="../../assets/images/menu.svg" alt="" srcset="" />
+        </button>
+        <div class="flex flex-col ml-2">
+            <span class="text-xs font-semibold text-white">Cloud Tenants Pvt Ltd</span>
+            <span class="text-[10px] font-medium text-white">HEAD OFFICE | 2022-2023</span>
+        </div>
+        <button
+            class="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 ml-2"
+            id="headlessui-listbox-button-:R2j36:" type="button">
+            <span class="material-symbols-outlined text-white"> settings </span>
+        </button>
+    </div>
+    <!-- searchbar section -->
+    <div class="hidden relative lg:flex -my-5 mr-6 sm:mr-8 lg:mr-0 bg-white rounded-md flex-shrink w-[40%]">
+        <div class="flex flex-row-reverse justify-center items-center p-1 w-full">
+            <span class="material-symbols-outlined ml-2 text-[#C1C1C8] !text-sm mr-2 cursor-pointer">
+                search
+            </span>
+            <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterResults()" placeholder="Search"
+                class="search_bar h-full w-full focus:outline-none py-1 px-2 placeholder:text-[#C1C1C8] placeholder:text-xs text-sm" />
+        </div>
+        <div *ngIf="showResults" class="bg-white search_results absolute rounded-md top-[1.90rem] max-h-64 h-fit w-full overflow-auto">
+            <ul class="list-none">
+                <li *ngFor="let result of filteredResults">
+                  <a [href]="result.link" class="w-full h-full">{{ result.title }}</a>
+                </li>
+              </ul>
+        </div>
+    </div>
+    <!-- user profile section -->
+    <div class="right_panel relative items-center flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
+        <!-- Header Icons -->
+        <div class="flex">
+            <a href="" class="text-white ml-2 relative flex items-center justify-center">
+                <img src="../../assets/images/powerBi.svg" alt="">
+                <span class="header_title absolute -bottom-10  hidden text-xs font-semibold text-white rounded-full bg-[#17181c] px-2 py-0.5 w-fit whitespace-nowrap">Power Bi</span>
+            </a>
+            <a *ngFor="let headerIcon of headerIcons; let i = index;" 
+                href="" class="text-white ml-2 relative flex items-center justify-center">
+                <span class="material-symbols-outlined !text-[18px]">
+                    {{headerIcon}}
+                </span>
+                <span class="header_title absolute -bottom-10  hidden text-xs font-semibold text-white rounded-full bg-[#17181c] px-2 py-0.5 w-fit whitespace-nowrap">{{headerTitle[i]}}</span>
+            </a>
+        </div>
+        <div class="relative z-10">
+            <button (click)="toggleDropdown()"
+                class="flex h-6 w-6 items-center justify-center" type="button">
+                <div *ngIf="userLoggedIn; else avatar">
+                    <img class="w-[40px] h-[40px] object-cover rounded-full max-w-none" src="../../assets/images/user.jpg">
+                </div>
+                <ng-template #avatar>
+                    <span class="material-symbols-outlined !text-4xl text-white">
+                        person
+                    </span>
+                </ng-template>
+            </button>
+            <div [ngClass]="{ 'hidden': isDropdownActive }" id="dropdownNavbar"
+                class="absolute right-0 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow mt-2.5 transition-all duration-500 ease-out">
+                <ul class="py-1 px-1 text-sm">
+                    <li
+                        class="flex items-center px-4 py-2 rounded-md hover:bg-[#F3F4F6]">
+                        <a class="flex items-center justify-between" href="#">
+                            <div *ngIf="userLoggedIn; else avatar2">
+                                <img class="w-[40px] h-[40px] object-cover rounded-full max-w-none" src="../../assets/images/user.jpg">
+                            </div>
+                            <ng-template #avatar2>
+                                <span class="material-symbols-outlined !text-4xl text-[#9B9B9B]">
+                                    person
+                                </span>
+                            </ng-template>
+                            <div class="flex flex-col ml-2">
+                                <span class="text-xs font-semibold">Noman Ali</span>
+                                <span class="text-xs text-[#9B9B9B]">noman.sd114@gmail.com</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li *ngFor="let dropdownIcon of dropdownIcons; let i = index"
+                        class="flex items-center px-4 py-2 rounded-md text-[#9B9B9B] hover:bg-[#F3F4F6]">
+                        <a href="#" class="text-sm flex items-center w-full">
+                            <span class="material-symbols-outlined !text-md"> {{dropdownIcon}} </span>
+                            <span class="ml-3"> {{dropdownText[i]}} </span>
+                        </a>
+                    </li>
+                    <li
+                        class="flex items-center px-4 py-2 rounded-md text-[#9B9B9B] hover:bg-[#fd4444] hover:text-white">
+                        <a (click)="onLogout()" href="#" class="text-sm flex items-center w-full">
+                            <span class="material-symbols-outlined !text-md">logout</span>
+                            <span class="ml-3">Sign out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,9 @@
+.header_bx {
+    background: linear-gradient( 45deg, #2764AD 20%, #3978C3 20% 50%, #4485D1 50% 80%, #4C93E7 80%)
+}
+.right_panel a:hover .header_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:  all 1s ease-in-out;
+}
