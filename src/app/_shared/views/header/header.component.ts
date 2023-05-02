@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import { SearchResult } from 'src/app/models/search.model'
 import { AuthGuard } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -19,11 +20,13 @@ export class HeaderComponent implements OnInit {
   allResults: SearchResult[] = [];
   filteredResults: SearchResult[] = [];
   showResults = false;
+  selectedIndex = -1;
   @Output() toggleSidebar = new EventEmitter<void>();
 
   constructor(
     private apiClient: ApiClientService,
-    private authGuard: AuthGuard
+    private authGuard: AuthGuard,
+    private router: Router
     ) { }
 
   toggleDropdown() {
@@ -44,6 +47,30 @@ export class HeaderComponent implements OnInit {
   }
   onToggleSidebar() {
     this.toggleSidebar.emit();
+  }
+  onArrowDown() {
+    if (this.selectedIndex < this.filteredResults.length - 1) {
+      this.selectedIndex++;
+    }
+    console.log("on arrow down called");
+    
+  }
+  
+  onArrowUp() {
+    if (this.selectedIndex > 0) {
+      this.selectedIndex--;
+    }
+    console.log("on arrow up called");
+  }
+  onEnter(index?: number) {
+    console.log("on enter called");
+    
+    if (index === undefined) {
+      return;
+    }
+    const result = this.filteredResults[index];
+    // this.router.navigateByUrl(result.link);
+    window.location.href = result.link
   }
   onLogout() {
     this.authGuard.logout()

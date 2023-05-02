@@ -20,15 +20,23 @@
             <span class="material-symbols-outlined ml-2 text-[#C1C1C8] !text-sm mr-2 cursor-pointer">
                 search
             </span>
-            <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterResults()" placeholder="Search"
-                class="search_bar h-full w-full focus:outline-none py-1 px-2 placeholder:text-[#C1C1C8] placeholder:text-xs text-sm" />
+            <input type="text" 
+                [(ngModel)]="searchQuery" 
+                (ngModelChange)="filterResults()" 
+                (keydown.arrowdown)="onArrowDown()" 
+                (keydown.arrowup)="onArrowUp()" 
+                (keydown.enter)="onEnter(selectedIndex)" 
+                (blur)="showResults = false" 
+                placeholder="Search"
+                class="search_bar h-full w-full focus:outline-none py-1 px-2 placeholder:text-[#C1C1C8] placeholder:text-xs text-sm" 
+            />
         </div>
-        <div *ngIf="showResults" class="bg-white search_results absolute rounded-md top-[1.90rem] max-h-64 h-fit w-full overflow-auto">
-            <ul class="list-none">
-                <li *ngFor="let result of filteredResults">
-                  <a [href]="result.link" class="w-full h-full">{{ result.title }}</a>
+        <div *ngIf="showResults" class="bg-white search_results absolute rounded-md top-[2.1rem] max-h-64 h-fit w-full overflow-auto">
+            <ul class="list-none flex-1">
+                <li *ngFor="let result of filteredResults; let i = index" class="flex-1">
+                  <a [href]="result.link" [class.selected]="i === selectedIndex" [ngClass]="{'bg-[#2070e9]': i === selectedIndex, 'text-white' : i === selectedIndex}" class="flex w-full px-3 py-2.5 text-sm hover:text-white hover:bg-[#2070e9]">{{ result.title }}</a>
                 </li>
-              </ul>
+            </ul>
         </div>
     </div>
     <!-- user profile section -->
