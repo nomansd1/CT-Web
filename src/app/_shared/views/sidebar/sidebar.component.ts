@@ -21,9 +21,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiClient.getData('http://localhost:4000/menu').then(results => {
-      this.allResults = results;
-      console.log(this.allResults[0].title);
-      
+      this.allResults = results;      
     }).catch(error => console.log(error)) 
   }
 

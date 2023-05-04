@@ -14,13 +14,19 @@ export class AuthGuard implements CanActivate {
   canActivate(): boolean {
     const token = localStorage.getItem('token');
     const tokenExpiration = localStorage.getItem('tokenExpiration');
-
     // Check for token and its expiration time in local storage
     if (token && tokenExpiration) {
       const now = new Date();      
       // Check if token is expired
       if (now < new Date(tokenExpiration)) {
         return true; // Allow access to protected route
+      }
+      else {
+        // Token has expired, remove it from local storage and redirect to login page
+        localStorage.removeItem('token');
+        localStorage.removeItem('tokenExpiration');
+        this.router.navigate(['/login']);
+        return false;
       }
     }
       // Credentials are not stored, redirect to login page

@@ -13,6 +13,10 @@ import { FooterComponent } from './_shared/views/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BusinesspartnerComponent } from './components/businesspartner/businesspartner.component';
+import { IndexHeaderComponent } from './_shared/views/index/index-header/index-header.component';
+import { CompanyManagementComponent } from './views/company/company-management/company-management.component';
+import { TableComponent } from './_shared/views/table/table.component';
+import { IndexBodyComponent } from './_shared/views/index/index-body/index-body.component';
 
 
 
@@ -24,7 +28,11 @@ import { BusinesspartnerComponent } from './components/businesspartner/businessp
     FooterComponent,
     LoginComponent,
     DashboardComponent,
-    BusinesspartnerComponent
+    BusinesspartnerComponent,
+    IndexHeaderComponent,
+    CompanyManagementComponent,
+    TableComponent,
+    IndexBodyComponent
   ],
   imports: [
     BrowserModule,

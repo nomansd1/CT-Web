@@ -1,0 +1,46 @@
+{
+    "columns": [
+      { "name": "ID" },
+      { "name": "Name" },
+      { "name": "Short Name" },
+      { "name": "Industry" },
+      { "name": "Country" },
+      { "name": "Currency" },
+      { "name": "Language" },
+      { "name": "Is Active" },
+      { "name": "Action" }
+    ],
+    "data": [
+      {
+        "ID": 1,
+        "Name": "Acme Corporation",
+        "Short Name": "Acme",
+        "Industry": "Technology",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": true
+      },
+      {
+        "ID": 2,
+        "Name": "Globex Corporation",
+        "Short Name": "Globex",
+        "Industry": "Manufacturing",
+        "Country": "Canada",
+        "Currency": "CAD",
+        "Language": "English, French",
+        "Is Active": true
+      },
+      {
+        "ID": 3,
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      }
+    ]
+  }
+  

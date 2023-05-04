@@ -1,0 +1,19 @@
+<div class="flex items-center justify-between">
+    <!-- Breadcrumb with Page title-->
+    <div class="flex items-center">
+        <div class="flex bg-[#2070e9] justify-center items-center rounded-full w-8 h-8">
+            <i class="fa fa-home text-white"></i>
+        </div>
+        <i class="fa fa-angle-right mx-1.5"></i>
+        <h1 class="text-2xl font-bold">{{title}}</h1>
+    </div>
+    <!-- Searchbar -->
+    <div class="flex justify-end items-center w-[33%]">
+        <div [hidden]="isSearchBarHidden" class="rounded-full bg-white flex-grow">
+            <input class="bg-transparent w-full px-4 py-1.5 focus:outline-none text-sm" type="text" placeholder="Search">
+        </div>
+        <button (click)="toggleSearchbar()" class="ml-1.5 rounded-full bg-[#2070e9] w-9 h-9 flex justify-center items-center focus:outline-none">
+            <i class="fa fa-search text-white"></i>
+        </button>
+    </div>
+</div>

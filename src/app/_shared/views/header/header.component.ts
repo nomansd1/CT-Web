@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     private apiClient: ApiClientService,
     private authGuard: AuthGuard,
     private router: Router
-    ) { }
+  ) { }
 
   toggleDropdown() {
     this.isDropdownActive = !this.isDropdownActive;
@@ -52,19 +52,14 @@ export class HeaderComponent implements OnInit {
     if (this.selectedIndex < this.filteredResults.length - 1) {
       this.selectedIndex++;
     }
-    console.log("on arrow down called");
-    
   }
-  
+
   onArrowUp() {
     if (this.selectedIndex > 0) {
       this.selectedIndex--;
     }
-    console.log("on arrow up called");
   }
   onEnter(index?: number) {
-    console.log("on enter called");
-    
     if (index === undefined) {
       return;
     }
