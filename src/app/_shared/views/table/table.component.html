@@ -1,20 +1,23 @@
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2">
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 bg-gray-50">
             <tr>
-                <th *ngFor="let col of tableColumns" scope="col" class="px-6 py-3">
-                    {{ col }}
+                <th *ngFor="let col of columns" scope="col" class="px-6 py-1">
+                    {{ col.name }}
                 </th>
+                <!-- <td scope="col" class="px-6 py-1 text-center">
+                    <button class="bg-[#2070e9] text-white py-1 px-2 rounded-sm focus:outline-none mr-1">New</button>
+                    <button class="text-[#C9C9C9] border border-[#C9C9C9] py-1 px-2 rounded-sm focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </td> -->
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b hover:bg-gray-50">
-                <!-- <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th> -->
-                <td *ngFor="let data of tableData" class="px-6 py-4">
-                    {{ data }}
+            <tr *ngFor="let item of data" class="bg-white border-b hover:bg-gray-50">
+                <td *ngFor="let key of objectKeys(item)" class="px-6 py-4">
+                    {{ item[key] }}
                 </td>
             </tr>
         </tbody>

@@ -7,14 +7,14 @@ import { ApiClientService } from 'src/app/services/api-client.service';
   styleUrls: ['./company-management.component.css']
 })
 export class CompanyManagementComponent {
-  tableCol:string[] = []
+  tableColumns = []
+  tableData = []
   constructor(private apiClient: ApiClientService) {}
 
   ngOnInit(): void {
-    this.apiClient.getData('http://localhost:2000/columns').then(data => {
-      this.tableCol = data
-      console.log(this.tableCol);
-      
+    this.apiClient.getData('http://localhost:3000/tableData').then(data => {
+      this.tableColumns = data.columns;
+      this.tableData = data.data; 
     }).catch(error => console.log(error)) 
   }
 }

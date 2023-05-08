@@ -6,6 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-  @Input() tableColumns!: string[];
-  @Input() tableData!: any[];
+  @Input() columns!: any[];
+  @Input() data!: any[];
+
+  objectKeys(data: any[]) {
+    return Object.keys(data);
+  }
 }

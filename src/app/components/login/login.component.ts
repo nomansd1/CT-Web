@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.apiClient
       .getData('http://localhost:3000/users')
       .then((data) => {
-        const users: User[] = data; // Update to use 'data' directly, assuming it's an array of users
+        const users: User[] = data.users; // Update to use 'data' directly, assuming it's an array of users
         this.haveUser = users.find(
           (user) => user.email === this.email && user.password === this.password
         );

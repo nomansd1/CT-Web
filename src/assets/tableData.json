@@ -7,8 +7,7 @@
       { "name": "Country" },
       { "name": "Currency" },
       { "name": "Language" },
-      { "name": "Is Active" },
-      { "name": "Action" }
+      { "name": "Is Active" }
     ],
     "data": [
       {
@@ -19,7 +18,7 @@
         "Country": "United States",
         "Currency": "USD",
         "Language": "English",
-        "Is Active": true
+        "Is Active": "true"
       },
       {
         "ID": 2,
@@ -29,7 +28,7 @@
         "Country": "Canada",
         "Currency": "CAD",
         "Language": "English, French",
-        "Is Active": true
+        "Is Active": "true"
       },
       {
         "ID": 3,
@@ -39,7 +38,7 @@
         "Country": "United States",
         "Currency": "USD",
         "Language": "English",
-        "Is Active": false
+        "Is Active": "false"
       }
     ]
   }
