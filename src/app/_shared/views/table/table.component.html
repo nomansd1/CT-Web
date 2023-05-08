@@ -6,18 +6,38 @@
                 <th *ngFor="let col of columns" scope="col" class="px-6 py-1">
                     {{ col.name }}
                 </th>
-                <!-- <td scope="col" class="px-6 py-1 text-center">
-                    <button class="bg-[#2070e9] text-white py-1 px-2 rounded-sm focus:outline-none mr-1">New</button>
-                    <button class="text-[#C9C9C9] border border-[#C9C9C9] py-1 px-2 rounded-sm focus:outline-none">
+                <td scope="col" class="px-6 py-1 text-center">
+                    <button class="bg-[#2070e9] text-white py-1 px-2 rounded-md focus:outline-none mr-1">New</button>
+                    <button class="text-[#C9C9C9] border border-[#C9C9C9] py-1 px-2 rounded-md focus:outline-none">
                         <i class="fas fa-bars"></i>
                     </button>
-                </td> -->
+                </td>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of data" class="bg-white border-b hover:bg-gray-50">
-                <td *ngFor="let key of objectKeys(item)" class="px-6 py-4">
+            <tr 
+                *ngFor="let item of data; let i = index" 
+                class="bg-white border-b hover:bg-gray-50"
+                [ngClass]="{'bg-gray-100': i%2 == 0}">
+                <td *ngFor="let key of objectKeys(item)" class="px-6 py-2 text-xs">
                     {{ item[key] }}
+                </td>
+                <td class="px-6 py-2 text-xs text-center">
+                    <a href="" class="hover:bg-[#4F997B] hover:text-white border border-[#4F997B] text-[#4F997B] px-1 text-[10px] rounded-full focus:outline-none text-center inline-flex items-center">
+                        <span class="material-symbols-outlined text-base font-medium">
+                            description
+                        </span>
+                    </a>
+                    <a href="" class="hover:bg-[#2070e9] hover:text-white ml-1.5 border border-[#2070e9] text-[#2070e9] px-1 text-[10px] rounded-full focus:outline-none text-center inline-flex items-center">
+                        <span class="material-symbols-outlined text-base font-medium">
+                            content_copy
+                        </span>
+                    </a>
+                    <a href="" class="hover:bg-[#ED8A0A] hover:text-white ml-1.5 border border-[#ED8A0A] text-[#ED8A0A] px-1 text-[10px] rounded-full focus:outline-none text-center inline-flex items-center">
+                        <span class="material-symbols-outlined text-base font-medium">
+                            attach_file
+                        </span>
+                    </a>
                 </td>
             </tr>
         </tbody>

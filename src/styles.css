@@ -12,7 +12,8 @@
     font-family: 'Comfortaa';
 }
 body {
-    background-color: #ECEDFF;
+    /* background-color: #ECEDFF; */
+    background-color: #F5F6FD;
 }
 ::-webkit-scrollbar-thumb {
     background: #17181C;
