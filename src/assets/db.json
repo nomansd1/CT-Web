@@ -12,7 +12,7 @@
       ],
       "data": [
         {
-          "ID": 1,
+          "id": 1,
           "Name": "Acme Corporation",
           "Short Name": "Acme",
           "Industry": "Technology",
@@ -22,7 +22,7 @@
           "Is Active": true
         },
         {
-          "ID": 2,
+          "id": 2,
           "Name": "Globex Corporation",
           "Short Name": "Globex",
           "Industry": "Manufacturing",
@@ -32,7 +32,7 @@
           "Is Active": true
         },
         {
-          "ID": 3,
+          "id": 3,
           "Name": "Initech Corporation",
           "Short Name": "Initech",
           "Industry": "Finance",

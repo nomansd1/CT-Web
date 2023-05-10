@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 /* @import '@angular/material/prebuilt-themes/indigo-pink.css'; */
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:200,300,400,500,600,700,800,900&display=swap');
@@ -28,4 +30,9 @@ div.mat-expansion-panel-body {
 }
 .mat-content.mat-content-hide-toggle {
     margin-right: 0 !important;
+}
+.ng-select.custom_select .ng-select-container {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #2070e9;
 }

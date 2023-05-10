@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion'
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { HeaderComponent } from './_shared/views/header/header.component';
 import { SidebarComponent } from './_shared/views/sidebar/sidebar.component';
@@ -16,6 +17,7 @@ import { BusinesspartnerComponent } from './components/businesspartner/businessp
 import { IndexHeaderComponent } from './_shared/views/index-header/index-header.component';
 import { CompanyManagementComponent } from './views/company/company-management/company-management.component';
 import { TableComponent } from './_shared/views/table/table.component';
+import { SelectComponent } from './_shared/views/select/select.component';
 
 
 
@@ -31,6 +33,7 @@ import { TableComponent } from './_shared/views/table/table.component';
     IndexHeaderComponent,
     CompanyManagementComponent,
     TableComponent,
+    SelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { TableComponent } from './_shared/views/table/table.component';
     BrowserAnimationsModule,
     MatExpansionModule,
     FormsModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

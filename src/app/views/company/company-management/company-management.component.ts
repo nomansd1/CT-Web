@@ -9,6 +9,7 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 export class CompanyManagementComponent {
   tableColumns = []
   tableData = []
+  showAction = true;
   constructor(private apiClient: ApiClientService) {}
 
   ngOnInit(): void {
