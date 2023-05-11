@@ -10,14 +10,13 @@ export class TableComponent {
   @Input() data!: any[];
   @Input() action!: boolean;
   selectOptions = [
-    { id: 1, entries: 10 },
-    { id: 2, entries: 25 },
-    { id: 3, entries: 50 },
-    { id: 4, entries: 100 },
+    { id: 1, entry: 10 },
+    { id: 2, entry: 25 },
+    { id: 3, entry: 50 },
+    { id: 4, entry: 100 },
   ]
-  lebel = this.selectOptions.entries
+  label = this.selectOptions.map(option => option.entry)
   defaultOption = this.selectOptions[0].id;
-
   objectKeys(data: any[]) {
     return Object.keys(data);
   }

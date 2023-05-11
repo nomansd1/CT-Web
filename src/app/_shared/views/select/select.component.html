@@ -1,7 +1,12 @@
- <ng-select 
-    [(ngModel)]="defaultOption"
+ <!-- <ng-select 
     [items]="options" 
     bindLabel="bindingLabel" 
-    bindValue="options.id" 
-    class="custom_select">
- </ng-select>
+    bindValue="id"
+    class="custom_select"
+    [(ngModel)]="defaultOption"
+   >
+ </ng-select> -->
+
+ <ng-select class="custom_select" [(ngModel)]="defaultOption" [clearable]="false"> 
+   <ng-option *ngFor="let option of options; let i = index" [value]="option.id">{{ bindingLabel[i] }}</ng-option>
+</ng-select>
