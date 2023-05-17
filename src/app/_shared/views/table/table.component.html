@@ -3,7 +3,7 @@
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 bg-gray-50">
             <tr>
-                <th *ngFor="let col of columns" scope="col" class="px-6 py-1">
+                <th *ngFor="let col of columns; let i = index" scope="col" class="px-6 py-1">
                     {{ col.name }}
                 </th>
                 <ng-container *ngIf="action">
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             <tr 
-                *ngFor="let item of data; let i = index" 
+                *ngFor="let item of data.slice((currentPage - 1) * perPage, currentPage * perPage); let i = index" 
                 class="bg-white border-b hover:bg-gray-50"
                 [ngClass]="{'bg-gray-100': i%2 == 0}">
                 <td *ngFor="let key of objectKeys(item)" class="px-6 py-2 text-xs">
@@ -47,28 +47,32 @@
         </tbody>
     </table>
 </div>
-<div>
+<!-- pagination -->
+<div class="pb-4">
     <nav class="flex items-center justify-between py-4 bg-transparent" aria-label="Table navigation">
-        <div class="flex items-center justify-center">
+        <div *ngIf="data.length > 10" class="flex items-center justify-center">
             <span class="text-xs mr-2 text-gray-700">Show Entries:</span>
-            <app-select [options]="selectOptions" [defaultOption]="defaultOption" [bindingLabel]="label"></app-select>
+            <app-select [options]="selectOptions" [defaultOption]="defaultOption" [bindingLabel]="label" (selectChange)="onOptionSelect($event)"></app-select>
         </div>
-        <span class="text-xs font-normal text-gray-700">Showing <span class="font-bold text-gray-900">1-10</span> of <span class="font-bold text-gray-900 ">1000</span></span>
-        <ul class="inline-flex items-center -space-x-px">
+        <span class="text-xs font-normal text-gray-700">Showing 
+            <span class="font-bold text-gray-900">{{ getRangeStart() }}</span>-
+            <span class="font-bold text-gray-900">{{ getRangeEnd() }}</span> of 
+            <span class="font-bold text-gray-900 ">{{ data.length }}</span></span>
+        <ul *ngIf="data.length > 10" class="inline-flex items-center -space-x-px">
             <li>
-                <a href="#" class="inline-flex items-center px-4 py-2 text-xs font-medium text-gray-500 bg-transparent">
+                <button (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1" class="inline-flex items-center px-4 py-2 text-xs font-medium text-gray-500 bg-transparent">
                     <svg aria-hidden="true" class="w-3 h-3 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
                     Previous
-                  </a>
+                </button>
             </li>
             <li>
-                <a href="#" class="text-sm px-3 py-1 inline-flex items-center leading-tight text-white bg-[#2070e9] hover:bg-[#3BA3F2] rounded-full mx-0.5">1</a>
+                <button *ngFor="let page of getPageRange()" (click)="currentPage = page" [class.font-bold]="currentPage === page" class="text-sm w-[28px] h-[28px] inline-flex items-center justify-center text-white bg-[#2070e9] hover:bg-[#3BA3F2] rounded-full mx-0.5"> {{ page }} </button>
             </li>
             <li>
-                <a href="#" class="inline-flex items-center px-4 py-2 text-xs font-medium text-gray-500 bg-transparent">
+                <button (click)="currentPage = currentPage + 1" [disabled]="currentPage === getTotalPages()" class="inline-flex items-center px-4 py-2 text-xs font-medium text-gray-500 bg-transparent">
                     Next
                     <svg aria-hidden="true" class="w-3 h-3 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </a>
+                </button>
             </li>
         </ul>
     </nav>

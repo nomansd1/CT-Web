@@ -36,3 +36,6 @@ div.mat-expansion-panel-body {
     border: none;
     border-bottom: 2px solid #2070e9;
 }
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    padding: 5px 10px;
+}
