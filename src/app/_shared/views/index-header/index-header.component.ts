@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-index-header',
@@ -7,9 +7,15 @@ import { Component, Input } from '@angular/core';
 })
 export class IndexHeaderComponent {
   @Input() title!: string;
+  @Output() searchChange = new EventEmitter<string>();
+  
   isSearchBarHidden = true;
 
   toggleSearchbar() {
     this.isSearchBarHidden = !this.isSearchBarHidden;
+  }
+
+  onSearch(value: string) {
+    this.searchChange.emit(value);
   }
 }

@@ -11,9 +11,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { HeaderComponent } from './_shared/views/header/header.component';
 import { SidebarComponent } from './_shared/views/sidebar/sidebar.component';
 import { FooterComponent } from './_shared/views/footer/footer.component';
-import { LoginComponent } from './components/login/login.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { BusinesspartnerComponent } from './components/businesspartner/businesspartner.component';
+import { LoginComponent } from './views/login/login.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { IndexHeaderComponent } from './_shared/views/index-header/index-header.component';
 import { CompanyManagementComponent } from './views/company/company-management/company-management.component';
 import { TableComponent } from './_shared/views/table/table.component';
@@ -29,7 +28,6 @@ import { SelectComponent } from './_shared/views/select/select.component';
     FooterComponent,
     LoginComponent,
     DashboardComponent,
-    BusinesspartnerComponent,
     IndexHeaderComponent,
     CompanyManagementComponent,
     TableComponent,
