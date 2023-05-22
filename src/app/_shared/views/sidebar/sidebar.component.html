@@ -1,4 +1,4 @@
-<div class="fixed top-[-100%] w-[225px] h-screen bg-[black] text-white select-none transition-all duration-500 ease-in-out"  [ngClass]="{'top-[48px]': sidebarVisible}">
+<div class="fixed top-[-100%] w-[225px] h-screen bg-[black] text-white select-none transition-all duration-500 ease-in-out z-10"  [ngClass]="{'top-[48px]': sidebarVisible}">
     <ul>
         <li *ngFor="let item of allResults; let i = index;" (click)="toggleAccordion(i)">
             <mat-accordion mutli="false">

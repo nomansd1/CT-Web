@@ -35,4 +35,5 @@ export class CompanyManagementComponent {
       this.filteredTableData = this.tableData;
     }
   }
+
 }

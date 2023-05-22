@@ -17,6 +17,7 @@ import { IndexHeaderComponent } from './_shared/views/index-header/index-header.
 import { CompanyManagementComponent } from './views/company/company-management/company-management.component';
 import { TableComponent } from './_shared/views/table/table.component';
 import { SelectComponent } from './_shared/views/select/select.component';
+import { AddEditComponent } from './views/company/add-edit/add-edit.component';
 
 
 
@@ -32,6 +33,7 @@ import { SelectComponent } from './_shared/views/select/select.component';
     CompanyManagementComponent,
     TableComponent,
     SelectComponent,
+    AddEditComponent,
   ],
   imports: [
     BrowserModule,
