@@ -39,6 +39,7 @@ div.mat-expansion-panel-body {
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
     padding: 5px 10px;
 }
+/* global button styles */
 .btn {
     @apply flex;
     @apply justify-center;
@@ -57,5 +58,5 @@ div.mat-expansion-panel-body {
     @apply text-white;
 }
 .light__btn {
-    
+
 }
