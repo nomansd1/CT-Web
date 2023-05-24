@@ -39,3 +39,23 @@ div.mat-expansion-panel-body {
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
     padding: 5px 10px;
 }
+.btn {
+    @apply flex;
+    @apply justify-center;
+    @apply items-center;
+    @apply px-2;
+    @apply py-1;
+    @apply text-sm;
+    @apply rounded-md;
+}
+.primary__btn {
+    @apply bg-[#2070e9];
+    @apply text-white;
+}
+.secondary__btn {
+    @apply bg-[#17181c];
+    @apply text-white;
+}
+.light__btn {
+    
+}
