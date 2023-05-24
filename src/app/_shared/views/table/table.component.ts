@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TableColumns } from 'src/app/models/table.model';
 
 @Component({
@@ -22,7 +23,7 @@ export class TableComponent  {
   perPage = 10;
   currentPage = 1;
 
-
+  constructor(private router: Router) {}
 
   objectKeys(data: any[]) {
     return Object.keys(data);
@@ -50,5 +51,12 @@ export class TableComponent  {
 
   getTotalPages(): number {
     return Math.ceil(this.data.length / this.perPage);
+  }
+  navigateToAddEdit(id: number) {
+    const currentRoute = this.router.url;
+    const routeParts = currentRoute.split('/');
+    const context = routeParts[1]; // Assuming the context is the first part of the URL
+    const addEditRoute = `/${context}/add-edit/${id}`;
+    this.router.navigate([addEditRoute]);
   }
 }

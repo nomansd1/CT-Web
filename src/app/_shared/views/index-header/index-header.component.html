@@ -8,7 +8,7 @@
         <h1 class="text-xl font-bold">{{title}}</h1>
     </div>
     <!-- Searchbar -->
-    <div class="flex justify-end items-center w-[33%]">
+    <div *ngIf="showTableSearch !== false" class="flex justify-end items-center w-[33%]">
         <div [hidden]="isSearchBarHidden" class="rounded-md bg-white flex-grow border border-[#EBEBEB]">
             <input #tableSearch class="bg-transparent w-full px-4 py-1.5 focus:outline-none text-sm placeholder:text-xs" 
             type="text" 

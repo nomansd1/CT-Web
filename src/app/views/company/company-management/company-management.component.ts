@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { TableColumns } from 'src/app/models/table.model';
 import { ApiClientService } from 'src/app/services/api-client.service';
 
@@ -13,7 +14,10 @@ export class CompanyManagementComponent {
   showAction = true;
   filteredTableData: any[] = [];
 
-  constructor(private apiClient: ApiClientService) { }
+  constructor(
+    private apiClient: ApiClientService, 
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.apiClient.getData('http://localhost:3000/tableData').then(data => {
@@ -34,6 +38,14 @@ export class CompanyManagementComponent {
     } else {
       this.filteredTableData = this.tableData;
     }
+  }
+
+  navigateToAddEdit() {
+    const currentRoute = this.router.url;
+    const routeParts = currentRoute.split('/');
+    const context = routeParts[1]; // Assuming the context is the first part of the URL
+    const addEditRoute = `/${context}/add-edit`;
+    this.router.navigate([addEditRoute]);
   }
 
 }

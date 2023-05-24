@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class IndexHeaderComponent {
   @Input() title!: string;
   @Output() searchChange = new EventEmitter<string>();
+  @Input() showTableSearch = true;
   
   isSearchBarHidden = true;
 
