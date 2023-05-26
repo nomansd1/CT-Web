@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-edit.component.css']
 })
 export class AddEditComponent {
+  navigationMenu: any = [
+    { label: 'Principle', type: 'button', class: 'btn primary__btn mx-1'},
+    { label: 'Bulk Edit', type: 'button', class: 'btn primary__btn mx-1'},
+    { label: 'Cancel Edit', type: 'button', class: 'btn danger__btn mx-1 !hidden'},
+    { label: 'Edit', type: 'button', class: 'btn outline__btn mx-1'},
+    { label: 'New', type: 'button', class: 'btn outline__btn mx-1'},
+  ]
 }

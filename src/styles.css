@@ -45,18 +45,50 @@ div.mat-expansion-panel-body {
     @apply justify-center;
     @apply items-center;
     @apply px-2;
-    @apply py-1;
+    @apply py-1.5;
     @apply text-sm;
     @apply rounded-md;
+    @apply transition-all;
+    @apply duration-500;
+
 }
 .primary__btn {
     @apply bg-[#2070e9];
     @apply text-white;
 }
+.primary__btn:hover {
+    @apply bg-[#0f60c9]
+}
 .secondary__btn {
     @apply bg-[#17181c];
     @apply text-white;
 }
+.secondary__btn:hover {
+    @apply bg-[#333333];
+}
+.outline__btn {
+    @apply bg-transparent;
+    @apply border-[2px];
+    @apply border-[#2070e9];
+    @apply text-[#2070e9];
+}
+.outline__btn:hover {
+    @apply bg-[#2070e9];
+    @apply text-white;
+}
+.danger__btn {
+    @apply bg-[#fd4444];
+    @apply text-white;  
+}
+.danger__btn:hover {
+    @apply bg-[#c42828]
+}
 .light__btn {
-
+    @apply text-gray-700;
+    @apply bg-transparent;
+    @apply border-2;
+    @apply border-gray-300
+}
+.light__btn:hover {
+    @apply bg-gray-200
 }

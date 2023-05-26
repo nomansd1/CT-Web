@@ -1,0 +1,25 @@
+<div class="flex items-center justify-center">
+    <ng-container *ngFor="let item of items">
+      <button *ngIf="item.type === 'button'" [class]="item.class">
+        {{ item.label }}
+      </button>
+      <input *ngIf="item.type === 'input'" [class]="item.class" [type]="item.inputType" [placeholder]="item.placeholder">
+    </ng-container>
+    <div class="flex justify-center items-center">
+        <button class="btn primary__btn mx-1 !rounded-full">
+            <i class="fa fa-angle-double-left"></i>
+        </button>
+        <button class="btn primary__btn mx-1 !rounded-full">
+            <i class="fa fa-angle-left"></i>
+        </button>
+        <div>
+            <span>1 / 120</span>
+        </div>
+        <button class="btn primary__btn mx-1 !rounded-full">
+            <i class="fa fa-angle-right"></i>
+        </button> 
+        <button class="btn primary__btn mx-1 !rounded-full">
+            <i class="fa fa-angle-double-right"></i>
+        </button>
+    </div>
+</div>
