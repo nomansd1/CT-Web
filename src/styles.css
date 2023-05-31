@@ -100,5 +100,33 @@ div.mat-expansion-panel-body {
 }
 .navbar__input {
     @apply py-0.5;
-    /* border */
+    @apply px-2;
+    @apply border;
+    @apply border-[#ebebeb];
+    @apply rounded-md;
+    @apply bg-white;
+}
+.navbar__input:focus {
+    @apply outline-none;
+}
+.navbar__input::placeholder {
+    @apply text-xs;
+}
+.twobytwo__form label {
+    @apply text-gray-700;
+    @apply mb-2;
+    @apply w-[45%];
+    @apply mr-3;
+}
+.twobytwo__form input {
+    @apply w-full;  
+    @apply border-b-[#2070e9];
+    @apply border-b-2;
+    @apply bg-transparent;
+    @apply rounded-md;
+    @apply px-2;
+    @apply py-1;
+}
+.twobytwo__form:focus {
+    @apply outline-none
 }

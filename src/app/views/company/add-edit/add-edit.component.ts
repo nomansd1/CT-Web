@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AddEditComponent {
   navigationMenu: any = [
-    { type: 'input', class: ''},
     { label: 'Principle', type: 'button', class: 'btn primary__btn mx-1', icon: 'Sell'},
     { label: 'Bulk Edit', type: 'button', class: 'btn primary__btn mx-1', icon: 'edit_note'},
     { label: 'Cancel Edit', type: 'button', class: 'btn danger__btn mx-1 !hidden', icon: 'edit'},
