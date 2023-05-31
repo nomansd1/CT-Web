@@ -1,7 +1,13 @@
 <div class="p-4">
     <app-index-header [showTableSearch]="false" [title]="'Company Management'"></app-index-header>
     <div class="flex justify-between items-center my-3">
-        <button routerLink="/company" class="btn secondary__btn">Back</button>
+        <button routerLink="/company" class="btn secondary__btn">
+            <span class="material-symbols-outlined text-sm mr-1">
+                keyboard_backspace
+            </span>
+            Back
+        </button>
         <app-navbar [items]="navigationMenu"></app-navbar>
     </div>
+
 </div>

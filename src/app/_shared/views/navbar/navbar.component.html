@@ -1,24 +1,28 @@
 <div class="flex items-center justify-center">
     <ng-container *ngFor="let item of items">
-      <button *ngIf="item.type === 'button'" [class]="item.class">
-        {{ item.label }}
-      </button>
-      <input *ngIf="item.type === 'input'" [class]="item.class" [type]="item.inputType" [placeholder]="item.placeholder">
+        <input class="navbar__input" *ngIf="item.type === 'input'" [class]="item.class" [type]="item.inputType" [placeholder]="item.placeholder">
+        <button *ngIf="item.type === 'button'" [class]="item.class">
+            <span class="material-symbols-outlined text-sm mr-1">
+                {{ item.icon }}
+            </span>
+            {{ item.label }}
+        </button>
     </ng-container>
+    <!-- table pagination records -->
     <div class="flex justify-center items-center">
-        <button class="btn primary__btn mx-1 !rounded-full">
+        <button class="btn pagination__btn mx-0.5 !rounded-full">
             <i class="fa fa-angle-double-left"></i>
         </button>
-        <button class="btn primary__btn mx-1 !rounded-full">
+        <button class="btn pagination__btn mx-0.5 !rounded-full">
             <i class="fa fa-angle-left"></i>
         </button>
         <div>
             <span>1 / 120</span>
         </div>
-        <button class="btn primary__btn mx-1 !rounded-full">
+        <button class="btn pagination__btn mx-0.5 !rounded-full">
             <i class="fa fa-angle-right"></i>
         </button> 
-        <button class="btn primary__btn mx-1 !rounded-full">
+        <button class="btn pagination__btn mx-0.5 !rounded-full">
             <i class="fa fa-angle-double-right"></i>
         </button>
     </div>
