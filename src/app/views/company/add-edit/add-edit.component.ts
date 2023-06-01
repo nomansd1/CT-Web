@@ -12,6 +12,6 @@ export class AddEditComponent {
     { label: 'Cancel Edit', type: 'button', class: 'btn danger__btn mx-1 !hidden', icon: 'edit'},
     { label: 'Edit', type: 'button', class: 'btn outline__btn mx-1', icon: 'edit'},
     { label: 'New', type: 'button', class: 'btn outline__btn mx-1', icon: 'add'},
-
   ]
+  isChecked = false
 }

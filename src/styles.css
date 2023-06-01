@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* default styles for ng-select plugin */
 @import "~@ng-select/ng-select/themes/default.theme.css";
-
-/* @import '@angular/material/prebuilt-themes/indigo-pink.css'; */
-/* You can add global styles to this file, and also import other style files */
+/* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:200,300,400,500,600,700,800,900&display=swap');
 
 * {
@@ -14,32 +13,37 @@
     font-family: 'Comfortaa';
 }
 body {
-    /* background-color: #ECEDFF; */
-    background-color: #F5F6FD;
+    /* @apply bg-[#ECEDFF]; */
+     @apply bg-[#F5F6FD];
 }
+/* Global SCrollbar styles */
 ::-webkit-scrollbar-thumb {
-    background: #17181C;
-    border-radius: 5px;
+    @apply bg-[#17181C];
+    @apply rounded-[5px];
 }
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    @apply w-[8px];
+    @apply h-[8px];
 }
+/* Global sidebar styles */
 div.mat-expansion-panel-body {
-    padding: 0 !important;
+    @apply p-0 !important;
 }
 .mat-content.mat-content-hide-toggle {
-    margin-right: 0 !important;
+    @apply mr-0 !important;
 }
+/* Custom styles for ng-select plugin */
 .ng-select.custom_select .ng-select-container {
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #2070e9;
+    @apply bg-transparent;
+    @apply border-none;
+    @apply border-b-[3px];
+    @apply border-[#2070e9];
 }
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
-    padding: 5px 10px;
+    @apply p-[5px]; 
+    @apply px-[10px];
 }
-/* global button styles */
+/* Global button styles */
 .btn {
     @apply flex;
     @apply justify-center;
@@ -112,21 +116,29 @@ div.mat-expansion-panel-body {
 .navbar__input::placeholder {
     @apply text-xs;
 }
-.twobytwo__form label {
+.twobytwo__form {
+    @apply mb-2;
+    @apply flex;
+    @apply items-center;
+}
+.twobytwo__form .form__label {
     @apply text-gray-700;
     @apply mb-2;
-    @apply w-[45%];
     @apply mr-3;
+    @apply min-w-[200px];
+    @apply text-ellipsis;
+    @apply overflow-hidden
 }
-.twobytwo__form input {
+.twobytwo__form .form__input
+{
     @apply w-full;  
     @apply border-b-[#2070e9];
-    @apply border-b-2;
+    @apply border-b-[3px];
     @apply bg-transparent;
-    @apply rounded-md;
+    @apply rounded-sm;
     @apply px-2;
     @apply py-1;
 }
-.twobytwo__form:focus {
+.twobytwo__form .form__input:focus {    
     @apply outline-none
 }
