@@ -1,200 +1,199 @@
 {
-    "tableData": {
-      "columns": [
-        { "name": "ID" },
-        { "name": "Name" },
-        { "name": "Short Name" },
-        { "name": "Industry" },
-        { "name": "Country" },
-        { "name": "Currency" },
-        { "name": "Language" },
-        { "name": "Is Active" }
-      ],
-      "data": [
-        {
-          "id": 1,
-          "Name": "Acme Corporation",
-          "Short Name": "Acme",
-          "Industry": "Technology",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": true
-        },
-        {
-          "id": 2,
-          "Name": "Globex Corporation",
-          "Short Name": "Globex",
-          "Industry": "Manufacturing",
-          "Country": "Canada",
-          "Currency": "CAD",
-          "Language": "English, French",
-          "Is Active": true
-        },
-        {
-          "id": 3,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        },
-        {
-          "id": 4,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        },
-        {
-          "id": 5,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        },
-        {
-          "id": 6,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        },
-        {
-          "id": 7,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        },
-        {
-          "id": 8,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        },
-        {
-          "id": 9,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        },
-        {
-          "id": 10,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        },
-        {
-          "id": 11,
-          "Name": "Initech Corporation",
-          "Short Name": "Initech",
-          "Industry": "Finance",
-          "Country": "United States",
-          "Currency": "USD",
-          "Language": "English",
-          "Is Active": false
-        }
-      ]
-    },
-    "users": {
-      "users": [
-        {
-          "email": "user1@example.com",
-          "password": "password1",
-          "token": "token1",
-          "tokenExpiration": "2024-05-21 10:58:00"
-        },
-        {
-          "email": "user2@example.com",
-          "password": "password2",
-          "token": "token2",
-          "tokenExpiration": "2023-04-13 14:34:56"
-        }
-      ]
-    },
-    "menu": {
-      "menu": [
-        {
-          "title": "HR",
-          "icon": "fa-regular fa-folder",
-          "url": "/hr",
-          "subMenus": [
-            {
-              "title": "Employee Management",
-              "url": "/hr/employee-management"
-            },
-            {
-              "title": "Payroll",
-              "url": "/hr/payroll"
-            },
-            {
-              "title": "Time and Attendance",
-              "url": "/hr/time-and-attendance"
-            }
-          ]
-        },
-        {
-          "title": "Accounts",
-          "icon": "fa-regular fa-folder",
-          "url": "/accounts",
-          "subMenus": [
-            {
-              "title": "Invoicing",
-              "url": "/accounts/invoicing"
-            },
-            {
-              "title": "Expenses",
-              "url": "/accounts/expenses"
-            },
-            {
-              "title": "Accounts Payable",
-              "url": "/accounts/accounts-payable"
-            }
-          ]
-        },
-        {
-          "title": "Business Partner",
-          "icon": "fa-regular fa-handshake",
-          "url": "/business-partner",
-          "subMenus": [
-            {
-              "title": "Suppliers",
-              "url": "/business-partner/suppliers"
-            },
-            {
-              "title": "Customers",
-              "url": "/business-partner/customers"
-            }
-          ]
-        }
-      ]
-    }
+  "tableData": {
+    "columns": [
+      "SNo",
+      "Name",
+      "Short Name",
+      "Industry",
+      "Country",
+      "Currency",
+      "Language",
+      "Is Active"
+    ],
+    "data": [
+      {
+        "SNo": "1",
+        "Name": "Acme Corporation",
+        "Short Name": "Acme",
+        "Industry": "Technology",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": true
+      },
+      {
+        "SNo": "2",
+        "Name": "Globex Corporation",
+        "Short Name": "Globex",
+        "Industry": "Manufacturing",
+        "Country": "Canada",
+        "Currency": "CAD",
+        "Language": "English, French",
+        "Is Active": true
+      },
+      {
+        "SNo": "3",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      },
+      {
+        "SNo": "4",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      },
+      {
+        "SNo": "5",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      },
+      {
+        "SNo": "6",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      },
+      {
+        "SNo": "7",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      },
+      {
+        "SNo": "8",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      },
+      {
+        "SNo": "9",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      },
+      {
+        "SNo": "10",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      },
+      {
+        "SNo": "11",
+        "Name": "Initech Corporation",
+        "Short Name": "Initech",
+        "Industry": "Finance",
+        "Country": "United States",
+        "Currency": "USD",
+        "Language": "English",
+        "Is Active": false
+      }
+    ]
+  },
+  "users": {
+    "users": [
+      {
+        "email": "user1@example.com",
+        "password": "password1",
+        "token": "token1",
+        "tokenExpiration": "2024-05-21 10:58:00"
+      },
+      {
+        "email": "user2@example.com",
+        "password": "password2",
+        "token": "token2",
+        "tokenExpiration": "2023-04-13 14:34:56"
+      }
+    ]
+  },
+  "menu": {
+    "menu": [
+      {
+        "title": "HR",
+        "icon": "fa-regular fa-folder",
+        "url": "/hr",
+        "subMenus": [
+          {
+            "title": "Employee Management",
+            "url": "/hr/employee-management"
+          },
+          {
+            "title": "Payroll",
+            "url": "/hr/payroll"
+          },
+          {
+            "title": "Time and Attendance",
+            "url": "/hr/time-and-attendance"
+          }
+        ]
+      },
+      {
+        "title": "Accounts",
+        "icon": "fa-regular fa-folder",
+        "url": "/accounts",
+        "subMenus": [
+          {
+            "title": "Invoicing",
+            "url": "/accounts/invoicing"
+          },
+          {
+            "title": "Expenses",
+            "url": "/accounts/expenses"
+          },
+          {
+            "title": "Accounts Payable",
+            "url": "/accounts/accounts-payable"
+          }
+        ]
+      },
+      {
+        "title": "Business Partner",
+        "icon": "fa-regular fa-handshake",
+        "url": "/business-partner",
+        "subMenus": [
+          {
+            "title": "Suppliers",
+            "url": "/business-partner/suppliers"
+          },
+          {
+            "title": "Customers",
+            "url": "/business-partner/customers"
+          }
+        ]
+      }
+    ]
   }
-  
+}

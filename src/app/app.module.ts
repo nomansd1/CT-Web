@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion'
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MatTableModule } from '@angular/material/table'
 
 import { HeaderComponent } from './_shared/views/header/header.component';
 import { SidebarComponent } from './_shared/views/sidebar/sidebar.component';
@@ -43,7 +44,8 @@ import { NavbarComponent } from './_shared/views/navbar/navbar.component';
     BrowserAnimationsModule,
     MatExpansionModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

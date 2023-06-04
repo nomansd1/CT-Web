@@ -9,7 +9,7 @@ import { ApiClientService } from 'src/app/services/api-client.service';
   styleUrls: ['./company-management.component.css']
 })
 export class CompanyManagementComponent {
-  tableColumns: TableColumns[] = []
+  tableColumns: string[] = []
   tableData: any[] = []
   showAction = true;
   filteredTableData: any[] = [];

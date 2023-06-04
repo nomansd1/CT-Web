@@ -1,4 +1,4 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2">
+<!-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2">
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 bg-gray-50">
             <tr>
@@ -46,7 +46,6 @@
         </tbody>
     </table>
 </div>
-<!-- pagination -->
 <div class="pb-4">
     <nav class="flex items-center justify-between py-4 bg-transparent" aria-label="Table navigation">
         <div *ngIf="data.length > 10" class="flex items-center justify-center">
@@ -75,4 +74,24 @@
             </li>
         </ul>
     </nav>
+</div> -->
+
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2">
+    <ng-container *ngIf="columns && data">
+        <table mat-table [dataSource]="dataSource" matSort class="!w-full !bg-transparent !text-sm !text-left !text-gray-500">
+            <ng-container *ngFor="let column of displayedColumns">
+                <ng-container [matColumnDef]="column">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="!text-xs !text-gray-700 !bg-gray-50">{{ column }}
+                    </th>
+                    <td mat-cell *matCellDef="let row;" class="!px-6  !py-2 !text-xs">{{ row[column] }}</td>
+                </ng-container>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr class="!bg-white !border-b hover:!bg-gray-50" mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+        </table>
+    </ng-container>
 </div>
