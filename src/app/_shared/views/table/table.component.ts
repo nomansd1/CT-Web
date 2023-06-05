@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { TableColumns } from 'src/app/models/table.model';
@@ -10,7 +10,7 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class TableComponent implements AfterViewInit, OnInit  {
   @Input() columns!: string[];
   @Input() data!: any[];
   @Input() action!: boolean;
@@ -21,14 +21,13 @@ export class TableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<any>(this.data);
-    this.displayedColumns = this.columns;
-  }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.cdr.detectChanges();  
+  }
+  ngOnInit(): void {
+    this.dataSource = new MatTableDataSource<any>(this.data);
+    this.displayedColumns = this.columns;
   }
 
   selectOptions = [
@@ -43,7 +42,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   perPage = 10;
   currentPage = 1;
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private router: Router) {}
 
   objectKeys(data: any[]) {
     return Object.keys(data);
