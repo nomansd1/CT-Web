@@ -12,15 +12,23 @@ export class CompanyManagementComponent {
   tableColumns: string[] = []
   tableData: any[] = []
   showAction = true;
+  show=false;
   filteredTableData: any[] = [];
 
   constructor(
     private apiClient: ApiClientService, 
     private router: Router
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit(): void {
+    this.getdata()
+  }
+  getdata()
+  {
     this.apiClient.getData('http://localhost:3000/tableData').then(data => {
+      this.show=true;
       this.tableColumns = data.columns;
       this.tableData = data.data;
     }).catch(error => console.log(error))

@@ -26,6 +26,7 @@ export class TableComponent implements AfterViewInit, OnInit  {
     this.dataSource.sort = this.sort;
   }
   ngOnInit(): void {
+    debugger
     this.dataSource = new MatTableDataSource<any>(this.data);
     this.displayedColumns = this.columns;
   }
