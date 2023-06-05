@@ -10,6 +10,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MatTableModule } from '@angular/material/table'
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 
 import { HeaderComponent } from './_shared/views/header/header.component';
 import { SidebarComponent } from './_shared/views/sidebar/sidebar.component';

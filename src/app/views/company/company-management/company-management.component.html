@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-4 pb-10">
     <app-index-header (searchChange)="onSearch($event)" [title]="'Company Management'"></app-index-header>
     <app-table *ngIf="show" (actionClick)="navigateToAddEdit()" [columns]="tableColumns" [data]="filteredTableData.length > 0 ? filteredTableData : tableData" [action]="showAction"></app-table>
 </div>
