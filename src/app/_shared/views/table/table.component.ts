@@ -114,3 +114,5 @@ export class TableComponent implements AfterViewInit, OnInit  {
     this.router.navigate([addEditRoute]);
   }
 }
+
+
