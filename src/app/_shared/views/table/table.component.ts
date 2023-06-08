@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TableColumns } from 'src/app/models/table.model';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
+import { MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-table',
@@ -13,23 +14,57 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 export class TableComponent implements AfterViewInit, OnInit  {
   @Input() columns!: string[];
   @Input() data!: any[];
-  @Input() action!: boolean;
+  @Input() action1!: boolean;
   
   dataSource!: MatTableDataSource<any>;
   displayedColumns: string[] = [];
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  tableDropdownMenu = [
+    {label: 'Show/Hide Columns', icon: 'table_view', action: () => this.openDialog()},
+    {label: 'Filter', icon: 'filter_alt' },
+    {label: 'Load Layout', icon: 'table' },
+    {label: 'Save Layout', icon: 'save' },
+    {label: 'Generate File (BU)', icon: 'description' },
+    {label: 'Upload File (BU)', icon: 'upload_file' },
+  ]
+  constructor(private router: Router, public dialog: MatDialog) {}
   
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
   ngOnInit(): void {
-    debugger
     this.dataSource = new MatTableDataSource<any>(this.data);
-    this.displayedColumns = this.columns;
+    this.displayedColumns = this.columns.concat(['actionsColumn'])
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(TableComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   selectOptions = [
     { id: 1, entry: 10 },
@@ -43,7 +78,6 @@ export class TableComponent implements AfterViewInit, OnInit  {
   perPage = 10;
   currentPage = 1;
 
-  constructor(private router: Router) {}
 
   objectKeys(data: any[]) {
     return Object.keys(data);

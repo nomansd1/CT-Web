@@ -81,26 +81,60 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2">
     <ng-container *ngIf="columns && data">
         <table mat-table [dataSource]="dataSource" matSort class="!w-full !bg-transparent !text-sm !text-left !text-gray-500">
-            <ng-container *ngFor="let column of displayedColumns">
-                <ng-container [matColumnDef]="column">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="!text-xs !text-gray-700 !bg-gray-50">{{ column }}
-                    </th>
-                    <td mat-cell *matCellDef="let row;" class="!px-6 !py-2 !text-xs">{{ row[column] }}</td>
-                </ng-container>
+            <ng-container *ngFor="let column of columns" [matColumnDef]="column">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="!text-xs !text-gray-700 !bg-gray-50">{{ column }}</th>
+                <td mat-cell *matCellDef="let row;" class="!px-6 !py-2 !text-xs">{{ row[column] }}</td>
             </ng-container>
 
-            <ng-container matColumnDef="actions" *ngIf="action">
-                <th mat-header-cell *matHeaderCellDef class="!text-xs !text-gray-700 !bg-gray-50">Actions</th>
-                <td mat-cell *matCellDef="let row;" class="!px-6 !py-2 !text-xs">
-                    <button (click)="navigateToAddEdit(row.id)" class="...">Edit</button>
-                    <!-- Add more buttons or actions as needed -->
-                  </td>
+            <ng-container matColumnDef="actionsColumn">
+                <th mat-header-cell *matHeaderCellDef class="!text-xs !text-gray-700 !bg-gray-50 mx-auto">
+                    <div class="flex justify-center items-center">
+                        <button class="btn primary__btn">New</button>
+                        <button [matMenuTriggerFor]="menu" class="btn outline__btn ml-1">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <mat-menu class="bg-white rounded-md !py-1.5 !px-1.5" #menu="matMenu">
+                            <button *ngFor="let btn of tableDropdownMenu" (click)="btn.action" class="bg-transparent hover:bg-[#f3f4f6] !min-h-0 !py-1.5 rounded-md !text-xs flex !items-center" mat-menu-item>
+                                <span class="material-symbols-outlined text-base font-medium mr-1">
+                                    {{ btn.icon }}
+                                </span>
+                                <span>{{ btn.label }}</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </th>
+                <td mat-cell *matCellDef="let row;" class="!px-6 !py-2 !text-xs mx-auto">
+                    <div class="flex justify-center items-center">
+                        <button  class="hover:bg-gray-200 hover:text-gray-700 border border-gray-200 text-gray-700 px-1 text-[10px] rounded-full focus:outline-none text-center inline-flex items-center">
+                            <span class="material-symbols-outlined text-base font-medium">
+                                description
+                            </span>
+                        </button>
+                        <button class="hover:bg-[#3BA3F2] hover:text-white ml-1.5 border border-[#3BA3F2] text-[#3BA3F2] px-1 text-[10px] rounded-full focus:outline-none text-center inline-flex items-center">
+                            <span class="material-symbols-outlined text-base font-medium">
+                                content_copy
+                            </span>
+                        </button>
+                        <button class="hover:bg-gray-200 hover:text-gray-700 ml-1.5 border border-gray-200 text-gray-700 px-1 text-[10px] rounded-full focus:outline-none text-center inline-flex items-center">
+                            <span class="material-symbols-outlined text-base font-medium">
+                                attach_file
+                            </span>
+                        </button>
+                    </div>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr class="!bg-white !border-b hover:!bg-gray-50" mat-row *matRowDef="let row; columns: displayedColumns;">
-            </tr>
+            <tr class="bg-white !border-b hover:!bg-gray-50" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
     </ng-container>
 </div>
+
+
+<!-- <h2 mat-dialog-title>Generate Column Layout</h2>
+<mat-dialog-content>
+    <span *ngFor="let col of columns">
+        {{ col }}
+    </span>
+</mat-dialog-content> -->

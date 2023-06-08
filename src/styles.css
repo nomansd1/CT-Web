@@ -43,6 +43,14 @@ div.mat-expansion-panel-body {
     @apply p-[5px]; 
     @apply px-[10px];
 }
+/* Global styles for mat-dropdown */
+.mat-mdc-menu-content {
+    @apply !py-0;
+}
+.mdc-list-item__primary-text {
+    @apply !items-center;
+    @apply !flex;
+}
 /* Global button styles */
 .btn {
     @apply flex;
@@ -142,3 +150,4 @@ div.mat-expansion-panel-body {
 .twobytwo__form .form__input:focus {    
     @apply outline-none
 }
+

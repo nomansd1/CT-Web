@@ -10,9 +10,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MatTableModule } from '@angular/material/table'
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { HeaderComponent } from './_shared/views/header/header.component';
@@ -26,7 +27,6 @@ import { TableComponent } from './_shared/views/table/table.component';
 import { SelectComponent } from './_shared/views/select/select.component';
 import { AddEditComponent } from './views/company/add-edit/add-edit.component';
 import { NavbarComponent } from './_shared/views/navbar/navbar.component';
-
 
 
 @NgModule({
@@ -53,7 +53,11 @@ import { NavbarComponent } from './_shared/views/navbar/navbar.component';
     NgSelectModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
