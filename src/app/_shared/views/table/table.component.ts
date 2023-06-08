@@ -5,6 +5,7 @@ import { TableColumns } from 'src/app/models/table.model';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import { MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { ColumnVisibilityModalComponent } from '../modals/column-visibility-modal/column-visibility-modal.component';
 
 @Component({
   selector: 'app-table',
@@ -24,12 +25,13 @@ export class TableComponent implements AfterViewInit, OnInit  {
 
   tableDropdownMenu = [
     {label: 'Show/Hide Columns', icon: 'table_view', action: () => this.openDialog()},
-    {label: 'Filter', icon: 'filter_alt' },
-    {label: 'Load Layout', icon: 'table' },
-    {label: 'Save Layout', icon: 'save' },
-    {label: 'Generate File (BU)', icon: 'description' },
-    {label: 'Upload File (BU)', icon: 'upload_file' },
+    {label: 'Filter', icon: 'filter_alt', action: this.openDialog },
+    {label: 'Load Layout', icon: 'table', action: this.openDialog },
+    {label: 'Save Layout', icon: 'save', action: this.openDialog },
+    {label: 'Generate File (BU)', icon: 'description', action: this.openDialog },
+    {label: 'Upload File (BU)', icon: 'upload_file', action: this.openDialog },
   ]
+
   constructor(private router: Router, public dialog: MatDialog) {}
   
   ngAfterViewInit(): void {
@@ -42,13 +44,15 @@ export class TableComponent implements AfterViewInit, OnInit  {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(TableComponent);
-
+    const dialogRef = this.dialog.open(ColumnVisibilityModalComponent, {
+      width: '400px', // Set the width of the dialog as per your requirement
+    });
+  
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // Handle any actions after the dialog is closed
+      console.log('Dialog closed', result);
     });
   }
-
 
 
 

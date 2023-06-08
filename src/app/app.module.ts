@@ -27,6 +27,7 @@ import { TableComponent } from './_shared/views/table/table.component';
 import { SelectComponent } from './_shared/views/select/select.component';
 import { AddEditComponent } from './views/company/add-edit/add-edit.component';
 import { NavbarComponent } from './_shared/views/navbar/navbar.component';
+import { ColumnVisibilityModalComponent } from './_shared/views/modals/column-visibility-modal/column-visibility-modal.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { NavbarComponent } from './_shared/views/navbar/navbar.component';
     SelectComponent,
     AddEditComponent,
     NavbarComponent,
+    ColumnVisibilityModalComponent,
   ],
   imports: [
     BrowserModule,
