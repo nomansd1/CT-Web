@@ -1,0 +1,6 @@
+.selected {
+    @apply border-l-4;
+    @apply border-[#2070e9];
+    @apply font-bold;
+}
+  

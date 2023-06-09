@@ -1,8 +1,14 @@
-<div class="p-4">
+<div class="p-4 !bg-white">
     <h2 class="font-bold text-base">Generate Column Layout</h2>
     <mat-dialog-content>
-        <span *ngFor="let col of data.columns">
-            {{ col }}
-        </span>
+        <ul>
+            <li *ngFor="let col of data.allColumns; let i = index"
+                (click)="toggleColumnSelection(col)"
+                [ngClass]="{'selected': isSelected(col)}"
+                class="bg-transparent py-1.5 hover:bg-gray-200 rounded-md text-xs px-2 cursor-pointer my-0.5"
+                >
+              {{ col }}
+            </li>
+        </ul>
     </mat-dialog-content>
 </div>

@@ -7,5 +7,25 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./column-visibility-modal.component.css']
 })
 export class ColumnVisibilityModalComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  
+  selectedColumns: string[] = [];
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log(this.selectedColumns);
+  }
+
+  toggleColumnSelection(col: string): void {
+    const index = this.selectedColumns.indexOf(col);
+    if (index === -1) {
+      this.selectedColumns.push(col);
+    console.log(this.selectedColumns);
+    } else {
+      this.selectedColumns.splice(index, 1);
+    }
+  }
+  
+  isSelected(col: string): boolean {
+    return this.selectedColumns.includes(col);
+  }
+  
 }

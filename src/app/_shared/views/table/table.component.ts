@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, SimpleChanges, ViewChild, OnChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { TableColumns } from 'src/app/models/table.model';
@@ -6,13 +6,14 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import { MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { ColumnVisibilityModalComponent } from '../modals/column-visibility-modal/column-visibility-modal.component';
+import { UploadFileModalComponent } from '../modals/upload-file-modal/upload-file-modal.component';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements AfterViewInit, OnInit  {
+export class TableComponent implements AfterViewInit, OnInit, OnChanges  {
   @Input() columns!: string[];
   @Input() data!: any[];
   @Input() action1!: boolean;
@@ -23,15 +24,8 @@ export class TableComponent implements AfterViewInit, OnInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  tableDropdownMenu = [
-    {label: 'Show/Hide Columns', icon: 'table_view', action: () => this.openDialog()},
-    {label: 'Filter', icon: 'filter_alt', action: this.openDialog },
-    {label: 'Load Layout', icon: 'table', action: this.openDialog },
-    {label: 'Save Layout', icon: 'save', action: this.openDialog },
-    {label: 'Generate File (BU)', icon: 'description', action: this.openDialog },
-    {label: 'Upload File (BU)', icon: 'upload_file', action: this.openDialog },
-  ]
-
+  selectedColumns: string[] = [];
+  
   constructor(private router: Router, public dialog: MatDialog) {}
   
   ngAfterViewInit(): void {
@@ -40,20 +34,50 @@ export class TableComponent implements AfterViewInit, OnInit  {
   }
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<any>(this.data);
-    this.displayedColumns = this.columns.concat(['actionsColumn'])
+    this.updateDisplayedColumns();
+    // this.displayedColumns = this.columns.concat(['actionsColumn'])
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['columns']) {
+      this.updateDisplayedColumns();
+    }
+  }
+  
+  applyFilter() {
+    console.log("hello");
   }
 
+  updateDisplayedColumns(): void {
+    this.displayedColumns = this.columns.concat(['actionsColumn']);
+  }
   openDialog() {
     const dialogRef = this.dialog.open(ColumnVisibilityModalComponent, {
       width: '400px', // Set the width of the dialog as per your requirement
+      data: { 
+        allColumns: this.columns,
+        selectedColumns: this.columns.slice(0, -1)
+      },
+      // disableClose: true
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      // Handle any actions after the dialog is closed
-      console.log('Dialog closed', result);
+      if (result) {
+        this.columns = result.concat(['actionsColumn']); // Update the displayedColumns array with the selected columns
+        console.log(this.columns);
+      }
     });
   }
 
+  uploadFileDialog() {
+    const dialogRef = this.dialog.open(UploadFileModalComponent, {
+      width: '700px',
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      
+    });
+  }
 
 
 
@@ -82,34 +106,6 @@ export class TableComponent implements AfterViewInit, OnInit  {
   perPage = 10;
   currentPage = 1;
 
-
-  objectKeys(data: any[]) {
-    return Object.keys(data);
-  }
-  
-  onOptionSelect(value: number) {
-    this.selectedOption = this.selectOptions.find(option => option.id === value);
-    if (this.selectedOption) {
-      this.perPage = this.selectedOption.entry;
-      this.currentPage = 1; // Reset the current page to the first page when the number of entries per page changes
-    }
-  }
-  getRangeStart(): number {
-    return (this.currentPage - 1) * this.perPage + 1;
-  }
-
-  getRangeEnd(): number {
-    return Math.min(this.currentPage * this.perPage, this.data.length);
-  }
-
-  getPageRange(): number[] {
-    const pageCount = Math.ceil(this.data.length / this.perPage);
-    return Array.from({ length: pageCount }, (_, index) => index + 1);
-  }
-
-  getTotalPages(): number {
-    return Math.ceil(this.data.length / this.perPage);
-  }
   navigateToAddEdit(id: number) {
     const currentRoute = this.router.url;
     const routeParts = currentRoute.split('/');

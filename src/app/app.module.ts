@@ -14,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatSelectModule } from '@angular/material/select';
 
 import { HeaderComponent } from './_shared/views/header/header.component';
 import { SidebarComponent } from './_shared/views/sidebar/sidebar.component';
@@ -28,6 +28,7 @@ import { SelectComponent } from './_shared/views/select/select.component';
 import { AddEditComponent } from './views/company/add-edit/add-edit.component';
 import { NavbarComponent } from './_shared/views/navbar/navbar.component';
 import { ColumnVisibilityModalComponent } from './_shared/views/modals/column-visibility-modal/column-visibility-modal.component';
+import { UploadFileModalComponent } from './_shared/views/modals/upload-file-modal/upload-file-modal.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { ColumnVisibilityModalComponent } from './_shared/views/modals/column-vi
     AddEditComponent,
     NavbarComponent,
     ColumnVisibilityModalComponent,
+    UploadFileModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { ColumnVisibilityModalComponent } from './_shared/views/modals/column-vi
     MatInputModule,
     MatFormFieldModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
