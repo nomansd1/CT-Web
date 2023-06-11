@@ -51,6 +51,10 @@ div.mat-expansion-panel-body {
     @apply !items-center;
     @apply !flex;
 }
+/* Global styles for mat-table */
+.mdc-data-table__row {
+    @apply !h-0;
+}
 /* Global button styles */
 .btn {
     @apply flex;

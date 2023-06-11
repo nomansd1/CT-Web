@@ -78,7 +78,7 @@
 
 
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2 !w-full">
     <ng-container *ngIf="columns && data">
         <table mat-table [dataSource]="dataSource" matSort class="!w-full !bg-transparent !text-sm !text-left !text-gray-500">
             <ng-container *ngFor="let column of columns" [matColumnDef]="column">
@@ -89,8 +89,8 @@
             </ng-container>
 
             <ng-container matColumnDef="actionsColumn">
-                <th mat-header-cell *matHeaderCellDef class="!text-xs !text-gray-700 !bg-gray-50 mx-auto">
-                    <div class="flex justify-center items-center">
+                <th mat-header-cell *matHeaderCellDef class="!text-xs !text-gray-700 !bg-gray-50 mx-auto !max-w-[156.98px]">
+                    <div class="flex justify-end items-center">
                         <button class="btn primary__btn">New</button>
                         <button [matMenuTriggerFor]="menu" class="btn outline__btn ml-1">
                             <i class="fas fa-bars"></i>
@@ -108,13 +108,13 @@
                                 </span>
                                 <span>Filter</span>
                             </button>
-                            <button (click)="openDialog()" class="bg-transparent hover:bg-[#f3f4f6] !min-h-0 !py-1.5 rounded-md !text-xs flex !items-center" mat-menu-item>
+                            <button (click)="loadLayoutDialog()" class="bg-transparent hover:bg-[#f3f4f6] !min-h-0 !py-1.5 rounded-md !text-xs flex !items-center" mat-menu-item>
                                 <span class="material-symbols-outlined text-base font-medium mr-1">
                                     table
                                 </span>
                                 <span>Load Layout</span>
                             </button>
-                            <button (click)="openDialog()" class="bg-transparent hover:bg-[#f3f4f6] !min-h-0 !py-1.5 rounded-md !text-xs flex !items-center" mat-menu-item>
+                            <button (click)="saveLayoutDialog()" class="bg-transparent hover:bg-[#f3f4f6] !min-h-0 !py-1.5 rounded-md !text-xs flex !items-center" mat-menu-item>
                                 <span class="material-symbols-outlined text-base font-medium mr-1">
                                     save
                                 </span>
@@ -135,8 +135,8 @@
                         </mat-menu>
                     </div>
                 </th>
-                <td mat-cell *matCellDef="let row;" class="!px-6 !py-2 !text-xs mx-auto">
-                    <div class="flex justify-center items-center">
+                <td mat-cell *matCellDef="let row;" class="!px-6 !py-2 !text-xs mx-auto !max-w-[156.98px]">
+                    <div class="flex justify-end items-center">
                         <button  class="hover:bg-gray-200 hover:text-gray-700 border border-gray-200 text-gray-700 px-1 text-[10px] rounded-full focus:outline-none text-center inline-flex items-center">
                             <span class="material-symbols-outlined text-base font-medium">
                                 description
@@ -157,7 +157,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr class="bg-white !border-b hover:!bg-gray-50" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="!bg-white !border-b hover:!bg-gray-50" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
     </ng-container>

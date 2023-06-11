@@ -29,6 +29,7 @@ import { AddEditComponent } from './views/company/add-edit/add-edit.component';
 import { NavbarComponent } from './_shared/views/navbar/navbar.component';
 import { ColumnVisibilityModalComponent } from './_shared/views/modals/column-visibility-modal/column-visibility-modal.component';
 import { UploadFileModalComponent } from './_shared/views/modals/upload-file-modal/upload-file-modal.component';
+import { ColumnsLayoutModalComponent } from './_shared/views/modals/columns-layout-modal/columns-layout-modal.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { UploadFileModalComponent } from './_shared/views/modals/upload-file-mod
     NavbarComponent,
     ColumnVisibilityModalComponent,
     UploadFileModalComponent,
+    ColumnsLayoutModalComponent,
   ],
   imports: [
     BrowserModule,

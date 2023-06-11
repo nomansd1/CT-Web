@@ -18,4 +18,14 @@ export class ApiClientService {
       throw error;
     }
   }
+  public async postData(url: string, data: any) {
+    try {
+      const response = await axios.post(url, data);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+  
 }

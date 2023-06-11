@@ -1,0 +1,32 @@
+<div class="p-4 !bg-white">
+    <h2 class="font-bold text-base"> {{ data.modalTitle }} </h2>
+    <mat-dialog-content>
+        <div class="grid grid-cols-12 items-center my-2">
+            <div class="col-span-4">
+                <label>{{ data.title }}</label>
+            </div>
+            <div class="col-span-8">
+                <ng-container *ngIf="loadMode">
+                    <select name="" id="" class="w-full py-1">
+                        <option value="" disabled selected>Select an option</option>
+                        <option *ngFor="let layout of allSavedLayout" value="">{{layout.title}}</option>
+                    </select>
+                </ng-container>
+                <ng-container *ngIf="saveMode">
+                    <input type="text" [(ngModel)]="layoutitle" class="w-full py-1">
+                </ng-container>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 items-center my-2">
+            <div class="col-span-4">
+                <label>default</label>
+            </div>
+            <div class="col-span-8">
+                <input type="checkbox" [(ngModel)]="defaultLayout">
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="btn primary__btn" (click)="eventHandler()"> {{ data.button }} </button>
+    </mat-dialog-actions>
+</div>

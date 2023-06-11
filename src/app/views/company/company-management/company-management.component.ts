@@ -28,7 +28,7 @@ export class CompanyManagementComponent {
   getdata()
   {
     this.apiClient.getData('http://localhost:3000/tableData').then(data => {
-      this.show=true;
+      this.show = true;
       this.tableColumns = data.columns;
       this.tableData = data.data;
     }).catch(error => console.log(error))
