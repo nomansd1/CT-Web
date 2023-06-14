@@ -46,11 +46,6 @@ export class TableComponent implements AfterViewInit, OnInit {
     this.dataSource = new MatTableDataSource<any>(this.data);
     this.displayedColumns = this.columns.concat(['actionsColumn'])
     this.selectedColumns = this.columns
-    this.savedLayout = {
-      title: '',
-      defaultLayout: false,
-      defaultColumns: this.displayedColumns,
-    }
   }
 
 // Methods
@@ -74,7 +69,7 @@ export class TableComponent implements AfterViewInit, OnInit {
         this.displayedColumns = [...this.selectedColumns, 'actionsColumn'];
       }
       else {
-        this.displayedColumns = [...this.columns, 'actionsColumn'];
+        this.displayedColumns = [...this.columns];
       }
     });
   }
@@ -83,10 +78,6 @@ export class TableComponent implements AfterViewInit, OnInit {
     const dialogRef = this.dialog.open(UploadFileModalComponent, {
       width: '700px',
     });
-  
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(result); 
-    // });
   }
 
   saveLayoutDialog() {
@@ -97,17 +88,13 @@ export class TableComponent implements AfterViewInit, OnInit {
         title: 'title',
         action: {saveMode: true, loadMode: false },
         button: 'Save',
-        layout: this.savedLayout
+        layout: this.savedLayout ={
+          title: '',
+          defaultLayout: false,
+          defaultColumns: this.displayedColumns
+        }
       },
       disableClose: true
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // this.savedLayout.title = result.title;
-        // this.savedLayout.defaultLayout = result.defaultLayout;
-        // this.savedLayout.defaultColumns = this.displayedColumns;
-        // this.allLayouts.push(this.savedLayout);        
-      }
     });
   }
   
@@ -118,21 +105,19 @@ export class TableComponent implements AfterViewInit, OnInit {
         modalTitle: 'Load Layout',
         title: 'Layout(s)',
         action: {saveMode: false, loadMode: true },
-        // layout: this.allLayouts,
         button: 'Load'
       },
       disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("load layout ko update karny walyyy columns",result.allSavedLayout);
-        // this.displayedColumns = [...result.allSavedLayout.defaultColumns, 'actionsColumn'];
+        console.log("load layout ko update karny walyyy columns", result);
+        this.displayedColumns = [...result.defaultColumns];
       }
     });
   }
   
   
-
 
 
 

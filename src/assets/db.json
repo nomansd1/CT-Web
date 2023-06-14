@@ -123,74 +123,100 @@
       }
     ]
   },
-    "users": [
-      {
-        "email": "user1@example.com",
-        "password": "password1",
-        "token": "token1",
-        "tokenExpiration": "2024-05-21 10:58:00"
-      },
-      {
-        "email": "user2@example.com",
-        "password": "password2",
-        "token": "token2",
-        "tokenExpiration": "2023-04-13 14:34:56"
-      }
-    ],
-    "menu": [
-      {
-        "title": "HR",
-        "icon": "fa-regular fa-folder",
-        "url": "/hr",
-        "subMenus": [
-          {
-            "title": "Employee Management",
-            "url": "/hr/employee-management"
-          },
-          {
-            "title": "Payroll",
-            "url": "/hr/payroll"
-          },
-          {
-            "title": "Time and Attendance",
-            "url": "/hr/time-and-attendance"
-          }
-        ]
-      },
-      {
-        "title": "Accounts",
-        "icon": "fa-regular fa-folder",
-        "url": "/accounts",
-        "subMenus": [
-          {
-            "title": "Invoicing",
-            "url": "/accounts/invoicing"
-          },
-          {
-            "title": "Expenses",
-            "url": "/accounts/expenses"
-          },
-          {
-            "title": "Accounts Payable",
-            "url": "/accounts/accounts-payable"
-          }
-        ]
-      },
-      {
-        "title": "Business Partner",
-        "icon": "fa-regular fa-handshake",
-        "url": "/business-partner",
-        "subMenus": [
-          {
-            "title": "Suppliers",
-            "url": "/business-partner/suppliers"
-          },
-          {
-            "title": "Customers",
-            "url": "/business-partner/customers"
-          }
-        ]
-      }
-    ],
-  "columnslayout": []
+  "users": [
+    {
+      "email": "user1@example.com",
+      "password": "password1",
+      "token": "token1",
+      "tokenExpiration": "2024-05-21 10:58:00"
+    },
+    {
+      "email": "user2@example.com",
+      "password": "password2",
+      "token": "token2",
+      "tokenExpiration": "2023-04-13 14:34:56"
+    }
+  ],
+  "menu": [
+    {
+      "title": "HR",
+      "icon": "fa-regular fa-folder",
+      "url": "/hr",
+      "subMenus": [
+        {
+          "title": "Employee Management",
+          "url": "/hr/employee-management"
+        },
+        {
+          "title": "Payroll",
+          "url": "/hr/payroll"
+        },
+        {
+          "title": "Time and Attendance",
+          "url": "/hr/time-and-attendance"
+        }
+      ]
+    },
+    {
+      "title": "Accounts",
+      "icon": "fa-regular fa-folder",
+      "url": "/accounts",
+      "subMenus": [
+        {
+          "title": "Invoicing",
+          "url": "/accounts/invoicing"
+        },
+        {
+          "title": "Expenses",
+          "url": "/accounts/expenses"
+        },
+        {
+          "title": "Accounts Payable",
+          "url": "/accounts/accounts-payable"
+        }
+      ]
+    },
+    {
+      "title": "Business Partner",
+      "icon": "fa-regular fa-handshake",
+      "url": "/business-partner",
+      "subMenus": [
+        {
+          "title": "Suppliers",
+          "url": "/business-partner/suppliers"
+        },
+        {
+          "title": "Customers",
+          "url": "/business-partner/customers"
+        }
+      ]
+    }
+  ],
+  "columnslayout": [
+    {
+      "title": "system limited",
+      "defaultColumns": [
+        "SNo",
+        "Name",
+        "Short Name",
+        "Industry",
+        "Country",
+        "Currency",
+        "Language",
+        "Is Active",
+        "actionsColumn"
+      ],
+      "defaultLayout": false,
+      "id": 1
+    },
+    {
+      "title": "ddddd",
+      "defaultColumns": [
+        "SNo",
+        "actionsColumn"
+      ],
+      "defaultLayout": false,
+      "id": 2
+    }
+  ]
 }

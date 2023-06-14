@@ -7,9 +7,9 @@
             </div>
             <div class="col-span-8">
                 <ng-container *ngIf="loadMode">
-                    <select name="" id="" class="w-full py-1">
+                    <select [(ngModel)]="selectedOption" name="options" class="w-full py-1">
                         <option value="" disabled selected>Select an option</option>
-                        <option *ngFor="let layout of allSavedLayout" value="">{{layout.title}}</option>
+                        <option *ngFor="let layout of allSavedLayout" [ngValue]="layout" >{{layout.title}}</option>
                     </select>
                 </ng-container>
                 <ng-container *ngIf="saveMode">
