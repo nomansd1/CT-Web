@@ -18,14 +18,16 @@ export class ApiClientService {
       throw error;
     }
   }
-  public async postData(url: string, data: any) {
+  public async postData(url: string, data: any, headers?: any) {
+    console.log("data from api client func",data);
     try {
-      const response = await axios.post(url, data);
+      const response = await axios.post(url, data, { headers });
       return response.data;
     } catch (error) {
       console.error(error);
       throw error;
     }
   }
+  
   
 }

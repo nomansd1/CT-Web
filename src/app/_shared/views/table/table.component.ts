@@ -16,7 +16,7 @@ import { ApiClientService } from 'src/app/services/api-client.service';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements AfterViewInit, OnInit {
-  // Decorators and Propertires
+  // Decorators and Properties
   @Input() columns!: string[];
   @Input() data!: any[];
   @Input() action1!: boolean;
@@ -96,18 +96,17 @@ export class TableComponent implements AfterViewInit, OnInit {
         modalTitle: 'Save Layout',
         title: 'title',
         action: {saveMode: true, loadMode: false },
-        button: 'Save'
-      }
+        button: 'Save',
+        layout: this.savedLayout
+      },
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.savedLayout.title = result.title;
-        this.savedLayout.defaultLayout = result.defaultLayout;
-        this.savedLayout.defaultColumns = this.displayedColumns
-        this.allLayouts.push(this.savedLayout)
-        console.log(this.savedLayout);
-        console.log(this.allLayouts);
-        
+        // this.savedLayout.title = result.title;
+        // this.savedLayout.defaultLayout = result.defaultLayout;
+        // this.savedLayout.defaultColumns = this.displayedColumns;
+        // this.allLayouts.push(this.savedLayout);        
       }
     });
   }
@@ -119,9 +118,10 @@ export class TableComponent implements AfterViewInit, OnInit {
         modalTitle: 'Load Layout',
         title: 'Layout(s)',
         action: {saveMode: false, loadMode: true },
-        layout: this.allLayouts,
+        // layout: this.allLayouts,
         button: 'Load'
-      }
+      },
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

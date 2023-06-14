@@ -123,7 +123,6 @@
       }
     ]
   },
-  "users": {
     "users": [
       {
         "email": "user1@example.com",
@@ -137,9 +136,7 @@
         "token": "token2",
         "tokenExpiration": "2023-04-13 14:34:56"
       }
-    ]
-  },
-  "menu": {
+    ],
     "menu": [
       {
         "title": "HR",
@@ -194,7 +191,6 @@
           }
         ]
       }
-    ]
-  },
-  "columnslayout": {}
+    ],
+  "columnslayout": []
 }
