@@ -25,7 +25,8 @@ export class TableComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [];
   selectedColumns?: string[];
   savedLayout!: ColumnsLayout;
-  allLayouts:any = []
+  allLayouts:any = [];
+  showFilter = false;
 
   // Child components load
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -45,12 +46,12 @@ export class TableComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<any>(this.data);
     this.displayedColumns = this.columns.concat(['actionsColumn'])
-    this.selectedColumns = this.columns
+    this.selectedColumns = this.columns;
   }
 
 // Methods
   applyFilter() {
-    console.log("hello");
+    
   }
 
   openDialog() {
@@ -91,11 +92,13 @@ export class TableComponent implements AfterViewInit, OnInit {
         layout: this.savedLayout ={
           title: '',
           defaultLayout: false,
-          defaultColumns: this.displayedColumns
+          defaultColumns: this.displayedColumns,
+          isDefaultLayout: false
         }
       },
       disableClose: true
     });
+
   }
   
   loadLayoutDialog() {
@@ -113,6 +116,7 @@ export class TableComponent implements AfterViewInit, OnInit {
       if (result) {
         console.log("load layout ko update karny walyyy columns", result);
         this.displayedColumns = [...result.defaultColumns];
+        this.selectedColumns = [...result.defaultColumns];
       }
     });
   }

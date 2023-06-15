@@ -1,5 +1,6 @@
 export interface ColumnsLayout {
     title: string,
     defaultLayout: boolean,
-    defaultColumns: any
+    defaultColumns: any,
+    isDefaultLayout?: boolean
 }

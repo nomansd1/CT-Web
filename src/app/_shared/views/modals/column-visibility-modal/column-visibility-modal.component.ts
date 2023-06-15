@@ -9,15 +9,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class ColumnVisibilityModalComponent {
   selectedCol: string[] = [];
   allColumns: string[] = [];
-  
+  validationMessage = "At least three columns must be selected.";
+  showValidation = false;
+
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<ColumnVisibilityModalComponent>
   ) {
-      this.allColumns = data.allColumns;
-      console.log(this.allColumns);
-      this.selectedCol = [...data.selectedColumns];
-      console.log("columns after initallize: ", this.selectedCol);
+    this.allColumns = data.allColumns;
+    console.log(this.allColumns);
+    this.selectedCol = [...data.selectedColumns];
+    console.log("columns after initallize: ", this.selectedCol);
   }
 
   toggleColumnSelection(col: string): void {
@@ -28,11 +31,10 @@ export class ColumnVisibilityModalComponent {
     } else {
       // Column is already selected, remove it from the selectedColumns array
       this.selectedCol.splice(index, 1);
-      console.log("all columns updated",this.allColumns);
-      console.log("selected columns updated",this.selectedCol);
+      console.log("all columns updated", this.allColumns);
+      console.log("selected columns updated", this.selectedCol);
     }
   }
-  
 
   isSelected(col: string): boolean {
     // Check if the column is present in the selectedColumns array
@@ -40,6 +42,14 @@ export class ColumnVisibilityModalComponent {
   }
 
   closeDialog(): void {
+    // Check if at least three columns are selected
+    if (this.selectedCol.length < 3) {
+      this.showValidation = true;
+      return; // Prevent closing the dialog if fewer than three columns are selected
+    }
+    else {
+      this.showValidation = false;
+    }
     // Pass the selectedColumns value back to the calling component
     this.dialogRef.close(this.selectedCol);
   }
