@@ -27,6 +27,8 @@ export class TableComponent implements AfterViewInit, OnInit {
   savedLayout!: ColumnsLayout;
   allLayouts:any = [];
   showFilter = false;
+  filterColumnData: any[] = [];
+
 
   // Child components load
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -48,11 +50,18 @@ export class TableComponent implements AfterViewInit, OnInit {
     this.displayedColumns = this.columns.concat(['actionsColumn'])
     this.selectedColumns = this.columns;
   }
-
-// Methods
+  
+  // Methods
   applyFilter() {
+    this.showFilter = true;
+  }
+  getColumnData(column: string): void {
+    this.filterColumnData = this.data.map((row:any) => row[column]);
+    console.log(this.filterColumnData);
     
   }
+  
+
 
   openDialog() {
     const dialogRef = this.dialog.open(ColumnVisibilityModalComponent, {
@@ -131,21 +140,6 @@ export class TableComponent implements AfterViewInit, OnInit {
 
 
 
-
-
-
-
-  selectOptions = [
-    { id: 1, entry: 10 },
-    { id: 2, entry: 25 },
-    { id: 3, entry: 50 },
-    { id: 4, entry: 100 },
-  ]
-  label = this.selectOptions.map(option => option.entry)
-  defaultOption = this.selectOptions[0].entry;
-  selectedOption: any = this.defaultOption;
-  perPage = 10;
-  currentPage = 1;
 
   navigateToAddEdit(id: number) {
     const currentRoute = this.router.url;
