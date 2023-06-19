@@ -31,16 +31,19 @@ export class CompanyManagementComponent {
       this.show = true;
       this.tableColumns = data.columns;
       this.tableData = data.data;
-    }).catch(error => console.log(error))
+      this.filteredTableData = data.data;
+    }).catch(error => console.log(error));
   }
   onSearch(searchValue: string) {
+    debugger
     // Filter the table data based on the search value
     if (searchValue) {
       this.filteredTableData = this.tableData.filter((item) =>
         // Perform your filtering logic here
         // For example, check if the item contains the search value in any of its properties
         Object.values(item).some((value: any) =>
-          value.toString().toLowerCase().includes(searchValue.toLowerCase())
+          value.toString().toLowerCase().includes(searchValue.toLowerCase()),
+          this.filteredTableData = this.tableData,
         )
       )
     } else {
