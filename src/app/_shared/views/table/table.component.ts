@@ -28,7 +28,8 @@ export class TableComponent implements AfterViewInit, OnInit {
   allLayouts:any = [];
   showFilter = false;
   filterColumnData: any[] = [];
-
+  showNgSelect = false;
+  selectedFilterColumn: string | null = '';
 
   // Child components load
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -56,7 +57,9 @@ export class TableComponent implements AfterViewInit, OnInit {
     this.showFilter = true;
   }
   getColumnData(column: string): void {
+    this.showFilter = false;
     this.filterColumnData = this.data.map((row:any) => row[column]);
+    this.selectedFilterColumn = column
     console.log(this.filterColumnData);
     
   }
