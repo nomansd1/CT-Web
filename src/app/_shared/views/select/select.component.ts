@@ -11,9 +11,4 @@ export class SelectComponent {
   @Input() bindingLabel!: any;
   @Output() selectChange = new EventEmitter<number>();
 
-  onValueChange(value: number) {
-    this.selectChange.emit(value);
-    console.log(value);  
-  }
-
 }

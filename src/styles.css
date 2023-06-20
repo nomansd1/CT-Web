@@ -43,6 +43,13 @@ div.mat-expansion-panel-body {
     @apply p-[5px]; 
     @apply px-[10px];
 }
+.floating__ngSelect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
 /* Global styles for mat-dropdown */
 .mat-mdc-menu-content {
     @apply !py-0;
@@ -54,6 +61,13 @@ div.mat-expansion-panel-body {
 /* Global styles for mat-table */
 .mdc-data-table__row {
     @apply !h-0;
+}
+/* Global styles for paginator */
+.cdk-overlay-pane, .mat-mdc-select-panel-above {
+    @apply !bg-white;
+}
+.mat-mdc-option {
+    @apply !text-black; 
 }
 /* Global button styles */
 .btn {

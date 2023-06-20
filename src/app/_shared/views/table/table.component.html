@@ -78,15 +78,26 @@
 
 
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2 !w-full">
+<div class="overflow-x-auto shadow-md sm:rounded-lg my-2 !w-full">
     <ng-container *ngIf="columns && data">
-        <table mat-table [dataSource]="dataSource" matSort class="!w-full !bg-transparent !text-sm !text-left !text-gray-500"
-        >
+        <table mat-table [dataSource]="dataSource" matSort class="!w-full !bg-transparent !text-sm !text-left !text-gray-500">
             <ng-container *ngFor="let column of columns" [matColumnDef]="column">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="!text-xs !text-gray-700 !bg-gray-50">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="!text-xs !text-gray-700 !bg-gray-50 relative">
+                    <div class="mr-1 cursor-pointer select-none" *ngIf="showFilter" (click)="getColumnData(column)">
+                        <span class="material-symbols-outlined text-base">
+                            filter_alt
+                        </span>
+                    </div>
                     {{ column }}
                 </th>
-                <td mat-cell *matCellDef="let row;" class="!px-6 !py-2 !text-xs">{{ row[column] }}</td>
+                <td mat-cell *matCellDef="let row;" class="!px-6 !py-2 !text-xs">
+                    {{ row[column] }}
+                    <div *ngIf="selectedFilterColumn === column" class="z-50 mb-3 floating__ngSelect">
+                        <ng-select float width="200px" class="custom_select" placeholder="select your option" [clearable]="true"> 
+                          <ng-option *ngFor="let option of filterColumnData; let i = index" [value]="option.id">{{ option }}</ng-option>
+                        </ng-select>
+                    </div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="actionsColumn">
@@ -168,4 +179,5 @@
       </mat-paginator>
     </ng-container>
 </div>
-<app-select class="w-full bg-red-500 !border-black"></app-select>
+
+<!-- <app-select [options]="filterColumnData" class="w-[200px] z-50"></app-select> -->

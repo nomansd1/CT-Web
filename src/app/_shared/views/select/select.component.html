@@ -7,6 +7,6 @@
    >
  </ng-select> -->
 
- <ng-select class="custom_select" [(ngModel)]="defaultOption" [clearable]="false" (ngModelChange)="onValueChange($event)"> 
-   <ng-option *ngFor="let option of options; let i = index" [value]="option.id">{{ bindingLabel[i] }}</ng-option>
+ <ng-select class="custom_select" placeholder="select your option" [clearable]="false"> 
+   <ng-option *ngFor="let option of options; let i = index" [value]="option.id">{{ option }}</ng-option>
 </ng-select>
