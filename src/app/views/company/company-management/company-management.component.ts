@@ -35,7 +35,6 @@ export class CompanyManagementComponent {
     }).catch(error => console.log(error));
   }
   onSearch(searchValue: string) {
-    debugger
     // Filter the table data based on the search value
     if (searchValue) {
       this.filteredTableData = this.tableData.filter((item) =>

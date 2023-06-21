@@ -31,6 +31,7 @@ import { ColumnVisibilityModalComponent } from './_shared/views/modals/column-vi
 import { UploadFileModalComponent } from './_shared/views/modals/upload-file-modal/upload-file-modal.component';
 import { ColumnsLayoutModalComponent } from './_shared/views/modals/columns-layout-modal/columns-layout-modal.component';
 import{HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import{HttpClientModule} from '@angular/common/http';
     MatMenuModule,
     MatDialogModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

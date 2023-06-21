@@ -10,6 +10,7 @@ import { ColumnsLayoutModalComponent } from '../modals/columns-layout-modal/colu
 import { ColumnsLayout } from 'src/app/models/columnsLayout.model';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import { HttpClient } from '@angular/common/http';
+import { AddEditComponent } from 'src/app/views/company/add-edit/add-edit.component';
 
 @Component({
   selector: 'app-table',
@@ -38,7 +39,7 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   // pagination
   totalItems = 0; // Total number of items
-  pageSize = 5;
+  pageSize = 10;
 
   // Child components load
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -173,6 +174,11 @@ export class TableComponent implements AfterViewInit, OnInit {
     const addEditRoute = `/${context}/add-edit/${id}`;
     this.router.navigate([addEditRoute]);
   }
+
+  // openEditForm(data: any) {
+  //   const dialogRef = this.dialog.open(AddEditComponent, {
+  //     data,
+  //   });}
 
 
 
