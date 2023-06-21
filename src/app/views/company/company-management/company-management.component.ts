@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableColumns } from 'src/app/models/table.model';
 import { ApiClientService } from 'src/app/services/api-client.service';
@@ -9,6 +9,8 @@ import { ApiClientService } from 'src/app/services/api-client.service';
   styleUrls: ['./company-management.component.css']
 })
 export class CompanyManagementComponent {
+  @Output() searchQuery = '';
+  
   tableColumns: string[] = []
   tableData: any[] = []
   showAction = true;
@@ -34,6 +36,7 @@ export class CompanyManagementComponent {
       this.filteredTableData = data.data;
     }).catch(error => console.log(error));
   }
+<<<<<<< HEAD
   onSearch(searchValue: string) {
     // Filter the table data based on the search value
     if (searchValue) {
@@ -48,8 +51,12 @@ export class CompanyManagementComponent {
     } else {
       this.filteredTableData = this.tableData;
     }
+=======
+  onSearchChange(value: string) {
+    this.searchQuery = value;
+>>>>>>> 45b6352a6128405bb255779655c95c6afc6df4c4
   }
-
+  
   navigateToAddEdit() {
     const currentRoute = this.router.url;
     const routeParts = currentRoute.split('/');

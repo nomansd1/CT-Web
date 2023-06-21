@@ -21,6 +21,10 @@ export class IndexHeaderComponent {
   onSearch(value: string) {
     debugger
     this.searchChange.emit(value);
+<<<<<<< HEAD
     
+=======
+    console.log(value);
+>>>>>>> 45b6352a6128405bb255779655c95c6afc6df4c4
   }
 }

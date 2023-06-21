@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
@@ -17,14 +17,20 @@ import { AddEditComponent } from 'src/app/views/company/add-edit/add-edit.compon
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements AfterViewInit, OnInit {
+export class TableComponent implements OnChanges, AfterViewInit, OnInit {
   // Decorators and Properties
   @Input() columns!: string[];
   @Input() data!: any[];
   @Input() action1!: boolean;
+<<<<<<< HEAD
   
   // dataSource!: MatTableDataSource<any>;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
+=======
+  @Input() searchQuery!: string;
+
+  dataSource!: MatTableDataSource<any>;
+>>>>>>> 45b6352a6128405bb255779655c95c6afc6df4c4
   displayedColumns: string[] = [];
   selectedColumns?: string[];
   savedLayout!: ColumnsLayout;
@@ -34,6 +40,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   selectedFilterColumn: string | null = '';
   selectedOptions: boolean[] = [];
   selectAllChecked = false;
+  
 
 
 
@@ -59,13 +66,31 @@ export class TableComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
   }
   ngOnInit(): void {
+    this.initializeTable()
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchQuery']) {
+      this.filterTableData();
+    }
+  }
+
+  initializeTable(): void {
     this.dataSource = new MatTableDataSource<any>(this.data);
-    this.displayedColumns = this.columns.concat(['actionsColumn'])
+    this.displayedColumns = this.columns.concat(['actionsColumn']);
     this.selectedColumns = this.columns;
   }
-  
-  // Methods
 
+  filterTableData(): void {
+    if (this.searchQuery) {
+      this.dataSource.filter = this.searchQuery.trim().toLowerCase();
+    } else {
+      this.dataSource.filter = '';
+    }
+    this.dataSource.paginator?.firstPage();
+  }
+
+
+  
   stopPropagation(event: Event): void {
     event.stopPropagation();
   }
@@ -81,12 +106,15 @@ export class TableComponent implements AfterViewInit, OnInit {
       console.log(this.filterColumnData);
     });
   }
-  selectAllOptions() {
-    // Check or uncheck all the below checkboxes based on the selectAllChecked value
-    this.filterColumnData.forEach((option) => {
-      option.checked = this.selectAllChecked;
-    });
+  toggleSelectAll() {
+    if (this.selectAllChecked) {
+      console.log(":the value has bee checked");
+    } else {
+      console.log(":the value has not been checked")
+    }
   }
+  
+  
   
 
   openDialog() {
