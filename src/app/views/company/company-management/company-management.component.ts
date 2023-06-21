@@ -5,7 +5,7 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 
 @Component({
   selector: 'app-company-management',
-  templateUrl: './company-management.component.html',
+  templateUrl:'./company-management.component.html',
   styleUrls: ['./company-management.component.css']
 })
 export class CompanyManagementComponent {
@@ -36,7 +36,6 @@ export class CompanyManagementComponent {
       this.filteredTableData = data.data;
     }).catch(error => console.log(error));
   }
-<<<<<<< HEAD
   onSearch(searchValue: string) {
     // Filter the table data based on the search value
     if (searchValue) {
@@ -51,10 +50,6 @@ export class CompanyManagementComponent {
     } else {
       this.filteredTableData = this.tableData;
     }
-=======
-  onSearchChange(value: string) {
-    this.searchQuery = value;
->>>>>>> 45b6352a6128405bb255779655c95c6afc6df4c4
   }
   
   navigateToAddEdit() {

@@ -22,15 +22,9 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
   @Input() columns!: string[];
   @Input() data!: any[];
   @Input() action1!: boolean;
-<<<<<<< HEAD
   
   // dataSource!: MatTableDataSource<any>;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
-=======
-  @Input() searchQuery!: string;
-
-  dataSource!: MatTableDataSource<any>;
->>>>>>> 45b6352a6128405bb255779655c95c6afc6df4c4
   displayedColumns: string[] = [];
   selectedColumns?: string[];
   savedLayout!: ColumnsLayout;
@@ -52,6 +46,7 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   id!: any;
+  searchQuery: any;
 
 
   constructor(

@@ -1,11 +1,5 @@
 <div class="p-4 pb-10">
-<<<<<<< HEAD
     <app-index-header (searchChange)="onSearch($event)" [title]="'Company Management'"></app-index-header>
     <app-table *ngIf="show" (actionClick)="navigateToAddEdit()" [columns]="tableColumns" [data]="filteredTableData.length > 0 ? filteredTableData : tableData" [action1]="showAction"></app-table>
 </div>
 
-=======
-    <app-index-header (searchChange)="onSearchChange($event)" [title]="'Company Management'"></app-index-header>
-    <app-table [searchQuery]="searchQuery" *ngIf="show" (actionClick)="navigateToAddEdit()" [columns]="tableColumns" [data]="tableData" [action1]="showAction"></app-table>
-</div>
->>>>>>> 45b6352a6128405bb255779655c95c6afc6df4c4
