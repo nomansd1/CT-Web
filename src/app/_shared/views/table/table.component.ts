@@ -28,8 +28,9 @@ export class TableComponent implements AfterViewInit, OnInit {
   allLayouts:any = [];
   showFilter = false;
   filterColumnData: any[] = [];
-  showNgSelect = false;
   selectedFilterColumn: string | null = '';
+  selectedOptions: boolean[] = [];
+  selectAllChecked = false;
 
   // Child components load
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -53,18 +54,29 @@ export class TableComponent implements AfterViewInit, OnInit {
   }
   
   // Methods
+
+  stopPropagation(event: Event): void {
+    event.stopPropagation();
+  }
   applyFilter() {
     this.showFilter = true;
   }
-  getColumnData(column: string): void {
-    this.showFilter = false;
-    this.filterColumnData = this.data.map((row:any) => row[column]);
-    this.selectedFilterColumn = column
-    console.log(this.filterColumnData);
-    
+  getColumnData(column: string, event: Event): void {
+    event.stopPropagation();
+    setTimeout(() => {
+      // this.showFilter = false;
+      this.filterColumnData = [...new Set(this.data.map((row: any) => row[column]))];
+      this.selectedFilterColumn = column;
+      console.log(this.filterColumnData);
+    });
+  }
+  selectAllOptions() {
+    // Check or uncheck all the below checkboxes based on the selectAllChecked value
+    this.filterColumnData.forEach((option) => {
+      option.checked = this.selectAllChecked;
+    });
   }
   
-
 
   openDialog() {
     const dialogRef = this.dialog.open(ColumnVisibilityModalComponent, {

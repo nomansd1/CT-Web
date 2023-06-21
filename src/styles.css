@@ -44,11 +44,11 @@ div.mat-expansion-panel-body {
     @apply px-[10px];
 }
 .floating__ngSelect {
-    position: absolute;
+    /* position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 1000; */
 }
 /* Global styles for mat-dropdown */
 .mat-mdc-menu-content {
