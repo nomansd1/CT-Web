@@ -18,5 +18,6 @@ export class IndexHeaderComponent {
 
   onSearch(value: string) {
     this.searchChange.emit(value);
+    console.log(value);
   }
 }

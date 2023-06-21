@@ -91,20 +91,21 @@
                     {{ column }}
                     <mat-menu #filterMenu="matMenu" class="bg-white rounded-md !py-1.5 !px-1.5 !min-w-[250px]">
                         <div class="h-[300px]">
-                            <ng-select [isOpen]="true" (click)="stopPropagation($event)" class="custom_select" placeholder="search" [clearable]="true" [multiple]="true" >
-                                <ng-option [disabled]="true" class="!flex !items-center">
-                                    <div class="flex items-center w-full">
-                                        <input type="checkbox" name="" id="selectAllListingOptions" [(ngModel)]="selectAllChecked" (click)="selectAllOptions()">
-                                        <label for="selectAllListingOptions" class="ml-2 text-xs flex w-full text-black cursor-pointer">Select All</label>
-                                    </div>
+                            <ng-select [isOpen]="true" (click)="$event.stopPropagation()" class="custom_select" placeholder="search" [clearable]="true">
+                                <ng-option [disabled]="true" class="!flex !items-center !pointer-events-none">
+                                  <div class="flex items-center w-full">
+                                    <input type="checkbox" name="selectAllListingOptions" id="selectAllListingOptions" [(ngModel)]="selectAllChecked">
+                                    <label (click)="toggleSelectAll()" for="selectAllListingOptions" class="ml-2 text-xs flex w-full text-black cursor-pointer">Select All</label>
+                                  </div>
                                 </ng-option>
                                 <ng-option [disabled]="true" *ngFor="let option of filterColumnData; let i = index" [value]="option.id">
-                                    <div class="flex items-center w-full">
-                                        <input type="checkbox" name="" [id]="'listingSelectOptions'+ i" [(ngModel)]="option.checked">
-                                        <label [for]="'listingSelectOptions'+ i" class="ml-2 text-xs flex w-full text-black cursor-pointer">{{ option }}</label>
-                                    </div>
+                                  <div class="flex items-center w-full">
+                                    <input type="checkbox" [name]="'listingSelectOptions'+ i" [id]="'listingSelectOptions'+ i">
+                                    <label [for]="'listingSelectOptions'+ i" class="ml-2 text-xs flex w-full text-black cursor-pointer">{{ option }}</label>
+                                  </div>
                                 </ng-option>
-                            </ng-select>  
+                              </ng-select>
+                               
                         </div>
                     </mat-menu>
                 </th>
