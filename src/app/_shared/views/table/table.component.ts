@@ -43,6 +43,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   // Child components load
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  id!: any;
 
 
   constructor(
