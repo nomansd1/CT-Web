@@ -10,14 +10,17 @@ export class IndexHeaderComponent {
   @Output() searchChange = new EventEmitter<string>();
   @Input() showTableSearch = true;
   
+  
   isSearchBarHidden = true;
 
   toggleSearchbar() {
     this.isSearchBarHidden = !this.isSearchBarHidden;
   }
 
+
   onSearch(value: string) {
+    debugger
     this.searchChange.emit(value);
-    console.log(value);
+    
   }
 }

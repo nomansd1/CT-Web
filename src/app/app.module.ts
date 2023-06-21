@@ -30,7 +30,8 @@ import { NavbarComponent } from './_shared/views/navbar/navbar.component';
 import { ColumnVisibilityModalComponent } from './_shared/views/modals/column-visibility-modal/column-visibility-modal.component';
 import { UploadFileModalComponent } from './_shared/views/modals/upload-file-modal/upload-file-modal.component';
 import { ColumnsLayoutModalComponent } from './_shared/views/modals/columns-layout-modal/columns-layout-modal.component';
-
+import{HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,9 @@ import { ColumnsLayoutModalComponent } from './_shared/views/modals/columns-layo
     MatFormFieldModule,
     MatMenuModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

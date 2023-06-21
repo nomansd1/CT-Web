@@ -10,19 +10,48 @@
         <app-navbar [items]="navigationMenu"></app-navbar>
     </div>
     <!-- form -->
+    <form [formGroup]=" formGroup">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-9">
         <div class="twobytwo__form">
             <label class="form__label" for="name">Name</label>
-            <input class="form__input" type="text" id="name">
+            <input class="form__input" type="text" id="name" formControlName="name" (click)="patchvalue()">
+        </div>
+        <div class="twobytwo__form">
+            <label class="form__label" for="name">Short Name</label>
+            <input class="form__input" type="text" id="name" formControlName="ShortName">
         </div>
         <div class="twobytwo__form mb-1 flex items-center">
-            <label class="form__label" for="name">Name</label>
-            <app-select class="w-full"></app-select>
+            <label class="form__label" for="name">Industry /Nature of Business</label>
+            <app-select class="w-full" formControlName="Industry"></app-select>
         </div>
         <div class="twobytwo__form mb-1 flex items-center">
-            <label class="form__label" for="name">Name</label>
+            <label class="form__label" for="name">Country Code</label>
+            <app-select class="w-full" formControlName="CountryCode"></app-select>
+        </div>
+        <div class="twobytwo__form mb-1 flex items-center">
+            <label class="form__label" for="name">Currency</label>
+            <app-select class="w-full" formControlName="Currency"></app-select>
+        </div>
+        <div class="twobytwo__form mb-1 flex items-center">
+            <label class="form__label" for="name">Language</label>
+            <app-select class="w-full"  formControlName="Language"></app-select>
+        </div>
+        <div class="twobytwo__form mb-1 flex items-center">
+            <label class="form__label" for="name">Mrp Calculation Mechanism </label>
+            <app-select class="w-full" formControlName="MrpCalculation"></app-select>
+        </div>
+        <div class="twobytwo__form">
+            <label class="form__label" for="name">Map Code</label>
+            <input class="form__input" type="text" id="name" formControlName="MapCode">
+        </div>
+        <div class="twobytwo__form">
+            <label class="form__label" for="name">LicenseKey</label>
+            <input class="form__input" type="text" id="name" formControlName="LicenseKey">
+        </div>
+        <div class="twobytwo__form mb-1 flex items-center">
+            <label class="form__label" for="name">Is active</label>
             <div class="toggle__btn">
-                <input [(ngModel)]="isChecked" type="checkbox" class="hidden" id="toggle">
+                <input [(ngModel)]="isChecked" type="checkbox" class="hidden" id="toggle" formControlName="Isactive">
                 <label for="toggle" class="flex items-center cursor-pointer">
                     <span [class.!bg-[#2070e9]]="isChecked" class="w-14 h-7 bg-gray-300 rounded-full p-1 duration-300 ease-in-out">
                       <div [class.translate-x-[140%]]="isChecked" class="bg-white w-5 h-5 rounded-full shadow-md transform duration-300 ease-in-out"></div>
@@ -30,5 +59,32 @@
                 </label>
             </div>
         </div>
+        <div class="twobytwo__form mb-1 flex items-center">
+            <label class="form__label" for="name">Parent Menu</label>
+            <app-select class="w-full"  formControlName="ParentMenu"></app-select>
+        </div>
+        <div class="twobytwo__form mb-1 flex items-center">
+            <label class="form__label" for="name">Password Policy </label>
+            <app-select class="w-full" formControlName="PasswordPolicy"></app-select>
+        </div>
+        <div class="twobytwo__form">
+            <label class="form__label" for="name">Account Code</label>
+            <input class="form__input" type="text" id="name" formControlName="AccountCode">
+        </div>
+        <div class="twobytwo__form">
+            <label class="form__label" for="name">Account name</label>
+            <input class="form__input" type="text" id="name" formControlName="Accountname">
+        </div>
+        <div class="twobytwo__form">
+            <label class="form__label" for="name">Interbranch Control Account Code</label>
+            <input class="form__input" type="text" id="name" formControlName="InterbranchControlAccountCode">
+        </div>
+        <div class="twobytwo__form">
+            <label class="form__label" for="name">Interbranch Control Account Name</label>
+            <input class="form__input" type="text" id="name" formControlName="Accountname"
+            formControlName="InterbranchControlAccountname">
+        </div>
     </div>
+    <!-- {{formGroup.value | json}} -->
+</form>
 </div>

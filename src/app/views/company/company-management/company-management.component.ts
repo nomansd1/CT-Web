@@ -5,7 +5,7 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 
 @Component({
   selector: 'app-company-management',
-  templateUrl: './company-management.component.html',
+  templateUrl:'./company-management.component.html',
   styleUrls: ['./company-management.component.css']
 })
 export class CompanyManagementComponent {
@@ -33,10 +33,23 @@ export class CompanyManagementComponent {
       this.show = true;
       this.tableColumns = data.columns;
       this.tableData = data.data;
-    }).catch(error => console.log(error))
+      this.filteredTableData = data.data;
+    }).catch(error => console.log(error));
   }
-  onSearchChange(value: string) {
-    this.searchQuery = value;
+  onSearch(searchValue: string) {
+    // Filter the table data based on the search value
+    if (searchValue) {
+      this.filteredTableData = this.tableData.filter((item) =>
+        // Perform your filtering logic here
+        // For example, check if the item contains the search value in any of its properties
+        Object.values(item).some((value: any) =>
+          value.toString().toLowerCase().includes(searchValue.toLowerCase()),
+          this.filteredTableData = this.tableData,
+        )
+      )
+    } else {
+      this.filteredTableData = this.tableData;
+    }
   }
   
   navigateToAddEdit() {

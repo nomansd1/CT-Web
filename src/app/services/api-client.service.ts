@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiClientService {
   private baseUrl = '../components/login/';
+  
   constructor() {}
 
   public async getData(url:string) {

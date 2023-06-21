@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import { MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { ColumnVisibilityModalComponent } from '../modals/column-visibility-modal/column-visibility-modal.component';
@@ -9,6 +9,8 @@ import { UploadFileModalComponent } from '../modals/upload-file-modal/upload-fil
 import { ColumnsLayoutModalComponent } from '../modals/columns-layout-modal/columns-layout-modal.component';
 import { ColumnsLayout } from 'src/app/models/columnsLayout.model';
 import { ApiClientService } from 'src/app/services/api-client.service';
+import { HttpClient } from '@angular/common/http';
+import { AddEditComponent } from 'src/app/views/company/add-edit/add-edit.component';
 
 @Component({
   selector: 'app-table',
@@ -20,9 +22,9 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
   @Input() columns!: string[];
   @Input() data!: any[];
   @Input() action1!: boolean;
-  @Input() searchQuery!: string;
-
-  dataSource!: MatTableDataSource<any>;
+  
+  // dataSource!: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
   displayedColumns: string[] = [];
   selectedColumns?: string[];
   savedLayout!: ColumnsLayout;
@@ -34,14 +36,23 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
   selectAllChecked = false;
   
 
+
+
+  // pagination
+  totalItems = 0; // Total number of items
+  pageSize = 10;
+
   // Child components load
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  id!: any;
+  searchQuery: any;
 
 
   constructor(
     private router: Router, 
     public dialog: MatDialog,
+    private http: HttpClient
   ) {}
   
   // Lifecycle methods
@@ -179,6 +190,35 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     const addEditRoute = `/${context}/add-edit/${id}`;
     this.router.navigate([addEditRoute]);
   }
+
+  // openEditForm(data: any) {
+  //   const dialogRef = this.dialog.open(AddEditComponent, {
+  //     data,
+  //   });}
+
+
+
+
+  // Serve side paginator
+
+  loadData() {
+    const url = 'http://localhost:3000/tableData';
+  
+    this.http.get<any[]>(url).subscribe(data => {
+      this.dataSource = new MatTableDataSource<any>(data);
+      this.totalItems = data.length;
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+  onPageChanged(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    const endIndex = startIndex + event.pageSize;
+  
+    this.http.get<any[]>('http://localhost:3000/tableData').subscribe(data => {
+      this.dataSource = new MatTableDataSource<any>(data.slice(startIndex, endIndex));
+    });
+  }
+ 
 }
 
 
