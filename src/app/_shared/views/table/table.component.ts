@@ -58,26 +58,28 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     }
   }
 
+  // Initialization of table
   initializeTable(): void {
     this.dataSource = new MatTableDataSource<any>(this.data);
     this.displayedColumns = this.columns.concat(['actionsColumn']);
     this.selectedColumns = this.columns;
   }
 
+// Master search for whole table data 
   filterTableData(): void {
     if (this.searchQuery) {
       this.dataSource.filter = this.searchQuery.trim().toLowerCase();
     } else {
-      this.dataSource.filter = '';
+      this.dataSource.filter  = '';
     }
     this.dataSource.paginator?.firstPage();
   }
 
-
-  
   stopPropagation(event: Event): void {
     event.stopPropagation();
   }
+
+  // Columns wise filtering
   applyFilter() {
     this.showFilter = true;
   }
@@ -98,9 +100,7 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     }
   }
   
-  
-  
-
+// Show and Load layout modal
   openDialog() {
     const dialogRef = this.dialog.open(ColumnVisibilityModalComponent, {
       width: '400px', // Set the width of the dialog as per your requirement
@@ -122,12 +122,14 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     });
   }
 
+  // Upload File modal
   uploadFileDialog() {
     const dialogRef = this.dialog.open(UploadFileModalComponent, {
       width: '700px',
     });
   }
 
+  // Save column layout modal
   saveLayoutDialog() {
     const dialogRef = this.dialog.open(ColumnsLayoutModalComponent, {
       width: '700px',
@@ -148,6 +150,7 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
 
   }
   
+  // Load column layout modal
   loadLayoutDialog() {
     const dialogRef = this.dialog.open(ColumnsLayoutModalComponent, {
       width: '700px',
@@ -168,17 +171,7 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     });
   }
   
-  
-
-
-
-
-
-
-
-
-
-
+// Navigation to add-edit
   navigateToAddEdit(id: number) {
     const currentRoute = this.router.url;
     const routeParts = currentRoute.split('/');
