@@ -115,7 +115,7 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
       console.log(this.filterColumnData);
     });
   }
-  toggleSelectAll() {
+  toggleSelectAll(event: Event) {
     if (this.selectAllChecked) {
       console.log(":the value has bee checked");
     } else {
@@ -211,6 +211,11 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     const addEditRoute = `/${context}/add-edit/${id}`;
     this.router.navigate([addEditRoute]);
   }
+
+
+
+  isChecked = false
+  
 }
 
 
