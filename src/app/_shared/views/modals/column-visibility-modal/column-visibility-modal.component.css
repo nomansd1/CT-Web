@@ -3,4 +3,15 @@
     @apply border-[#2070e9];
     @apply font-bold;
 }
-  
+.mat-expansion-panel-header {
+    @apply py-1.5;
+    @apply px-2;
+    @apply select-none;
+    /* @apply border-[#2070e9]; */
+    @apply border-2;
+    @apply my-1;
+}
+.mat-expansion-indicator::before ,
+.mat-expansion-indicator::before  {
+    @apply !border-[#2070e9];
+}

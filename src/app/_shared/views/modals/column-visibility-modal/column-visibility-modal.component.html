@@ -1,18 +1,105 @@
-<div class="p-4 !bg-white">
-    <h2 class="font-bold text-base">Generate Column Layout</h2>
-    <mat-dialog-content>
-        <span *ngIf="showValidation" class="text-[10px] font-semibold bg-[#fd4444] text-white w-fit mb-1 px-3 py-1 rounded-full">{{validationMessage}}</span>
-        <ul class="mt-2">
-            <li *ngFor="let col of data.allColumns; let i = index"
-                (click)="toggleColumnSelection(col)"
-                [ngClass]="{'selected': isSelected(col)}"
-                class="bg-transparent py-1.5 hover:bg-gray-200 rounded-md text-xs px-2 cursor-pointer my-0.5"
-                >
-              {{ col }}
-            </li>
-        </ul>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-        <button (click)="closeDialog()" class="btn primary__btn">Select</button>
-    </mat-dialog-actions>
+<div class="modal">
+    <div (click)="closeDialog()" class="absolute top-4 right-4 cursor-pointer">
+        <span class="material-symbols-outlined text-lg font-semibold">
+            close
+        </span>
+    </div>
+    <h2 class="modal__header">Customize layout</h2>
+    <p class="modal__subtext">Generate your customize layout for the table</p>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Generate layout">
+            <mat-dialog-content>
+                <p *ngIf="showValidation" class="modal__validationText mb-1">
+                    <i class="fa fa-times-circle text-[#FF5631] mr-2 -mt-[2px]"></i>
+                    <span>{{validationMessage}}</span>
+                </p>
+                <ul class="mt-2">
+                    <li *ngFor="let col of data.allColumns; let i = index"
+                        (click)="toggleColumnSelection(col)"
+                        [ngClass]="{'selected': isSelected(col)}"
+                        class="bg-transparent py-1.5 hover:bg-gray-200 rounded-md text-xs px-2 cursor-pointer my-0.5"
+                        >
+                      {{ col }}
+                    </li>
+                </ul>
+            </mat-dialog-content>
+            <mat-dialog-actions class="flex" align="center">
+                <button (click)="closeDialog()" class="flex flex-1 btn outline__btn mr-1" [disabled]="applyLayoutButtonDisabled">Apply Layout</button>
+                <button (click)="generateLayout()" class="flex flex-1 btn primary__btn">Generate Layout</button>
+            </mat-dialog-actions>
+        </mat-tab>
+        <mat-tab label="Manage layouts">
+            <mat-dialog-content>
+                <div class="w-full">
+                    <mat-accordion class="!-mt-2" mutli="false" (click)="toggleAccordion(1)">
+                        <mat-expansion-panel [expanded]="expandedIndex === 1">
+                            <mat-expansion-panel-header>
+                                <div class="flex items-center">
+                                    <span class="material-symbols-outlined">
+                                        bookmark_add
+                                    </span>
+                                    <h1 class="text-base font-semibold ml-1">Save your selected layout</h1>
+                                </div>
+                            </mat-expansion-panel-header>
+                            <div (click)="$event.stopPropagation()">
+                                <div class="mt-2">
+                                    <label for="" class="text-xs font-semibold">Layout Title:</label>
+                                    <input [(ngModel)]="layoutitle" type="text" class="mt-1 w-full p-2 px-3 rounded-md border-2 border-[#F1F1F3] focus:border-[#2070e9] focus:outline-none">
+                                </div>
+                                <div class="mt-2 flex justify-between items-center">
+                                    <label for="" class="text-xs font-semibold">Default Layout:</label>
+                                    <div class="toggle__btn ml-5">
+                                        <input [(ngModel)]="defaultLayout" [(ngModel)]="isChecked" type="checkbox" class="hidden" id="toggle">
+                                        <label for="toggle" class="flex items-center cursor-pointer">
+                                            <span [class.!bg-[#2070e9]]="isChecked" class="w-14 h-7 bg-gray-300 rounded-full p-1 duration-300 ease-in-out">
+                                              <div [class.translate-x-[140%]]="isChecked" class="bg-white w-5 h-5 rounded-full shadow-md transform duration-300 ease-in-out"></div>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center mt-2">
+                                    <button (click)="saveColumnsLayout()" class="btn outline__btn w-full">Save Layout</button>
+                                </div>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                    <mat-accordion mutli="false" class="mt-2" (click)="toggleAccordion(2)">
+                        <mat-expansion-panel [expanded]="expandedIndex === 2">
+                            <mat-expansion-panel-header>
+                                <div class="flex items-center">
+                                    <span class="material-symbols-outlined">
+                                        update
+                                    </span>
+                                    <h1 class="text-base font-semibold ml-1">Load your saved layouts</h1>
+                                </div>
+                            </mat-expansion-panel-header>
+                            <div (click)="$event.stopPropagation()">
+                                <div class="mt-2">
+                                    <label for="" class="text-xs font-semibold">Available Layouts:</label>
+                                    <select [(ngModel)]="selectedOption" placeholder="Select your layout" type="text" class="mt-1 w-full p-2 px-3 rounded-md border-2 border-[#F1F1F3] focus:border-[#2070e9] focus:outline-none">
+                                        <option value="" disabled selected hidden>Select your layout</option>
+                                        <option class="!hover:bg-[#2070e9] py-1" *ngFor="let layout of allSavedLayout" [ngValue]="layout">{{layout.title}}</option>
+                                    </select>
+                                </div>
+                                <div class="mt-2 flex justify-between items-center">
+                                    <label for="" class="text-xs font-semibold">Default Layout:</label>
+                                    <div class="toggle__btn ml-5">
+                                        <input [(ngModel)]="isChecked" type="checkbox" class="hidden" id="toggle">
+                                        <label for="toggle" class="flex items-center cursor-pointer">
+                                            <span [class.!bg-[#2070e9]]="isChecked" class="w-14 h-7 bg-gray-300 rounded-full p-1 duration-300 ease-in-out">
+                                              <div [class.translate-x-[140%]]="isChecked" class="bg-white w-5 h-5 rounded-full shadow-md transform duration-300 ease-in-out"></div>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center mt-2">
+                                    <button (click)="loadColumnLayout()" class="btn outline__btn w-full">Load Layout</button>
+                                </div>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </mat-dialog-content>
+        </mat-tab>
+    </mat-tab-group>
 </div>

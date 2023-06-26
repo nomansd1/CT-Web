@@ -192,5 +192,27 @@
       ]
     }
   ],
-  "columnslayout": []
+  "columnslayout": [
+    {
+      "title": "1",
+      "defaultColumns": [
+        "Currency",
+        "Language",
+        "Is Active"
+      ],
+      "defaultLayout": false,
+      "id": 1
+    },
+    {
+      "title": "212",
+      "defaultColumns": [
+        "Currency",
+        "Language",
+        "Country",
+        "Industry"
+      ],
+      "defaultLayout": true,
+      "id": 2
+    }
+  ]
 }

@@ -24,7 +24,7 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
 
   dataSource!: MatTableDataSource<any>;
   displayedColumns: string[] = [];
-  selectedColumns?: string[];
+  selectedColumns?: any;
   savedLayout!: ColumnsLayout;
   allLayouts:any = [];
   showFilter = false;
@@ -32,7 +32,8 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
   selectedFilterColumn: string | null = '';
   selectedOptions: boolean[] = [];
   selectAllChecked = false;
-  
+  defaultLayoutLoad: any;
+  isDefaultLayout = false
 
   // Child components load
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -42,6 +43,7 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
   constructor(
     private router: Router, 
     public dialog: MatDialog,
+    private apiClient: ApiClientService,
   ) {}
   
   // Lifecycle methods
@@ -49,23 +51,43 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
   ngOnInit(): void {
     this.initializeTable()
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['searchQuery']) {
       this.filterTableData();
     }
   }
 
+  loadDefaultLayout() {
+    console.log("load run hogya");
+    this.apiClient.getData('http://localhost:3000/columnslayout')
+      .then(data => {
+        const filteredLayoutData = data.filter((obj: any) => obj.defaultLayout === true);
+        const lastIndex = filteredLayoutData.length - 1;
+        const lastLayout = filteredLayoutData[lastIndex];
+        this.defaultLayoutLoad = lastLayout.defaultColumns;
+        this.isDefaultLayout = lastLayout.defaultLayout;
+        console.log("default load layout: ", this.defaultLayoutLoad, "this.isDefaultLayout", this.isDefaultLayout);
+      })
+      .catch(error => console.log(error))
+      this.displayedColumns = this.defaultLayoutLoad.concat(['actionsColumn']);
+      this.selectedColumns = this.defaultLayoutLoad;
+  }
+
   // Initialization of table
   initializeTable(): void {
+    console.log("initialize run hogya");
     this.dataSource = new MatTableDataSource<any>(this.data);
     this.displayedColumns = this.columns.concat(['actionsColumn']);
     this.selectedColumns = this.columns;
+    // this.loadDefaultLayout()
   }
 
-// Master search for whole table data 
+  // Master search for whole table data 
   filterTableData(): void {
     if (this.searchQuery) {
       this.dataSource.filter = this.searchQuery.trim().toLowerCase();
@@ -75,10 +97,11 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     this.dataSource.paginator?.firstPage();
   }
 
-  stopPropagation(event: Event): void {
-    event.stopPropagation();
+  onMenuOpened(): void {
+    const menuPanel = document.querySelector('.cdk-overlay-pane.mat-menu-panel') as HTMLElement;
+    menuPanel.style.pointerEvents = 'auto';
   }
-
+  
   // Columns wise filtering
   applyFilter() {
     this.showFilter = true;
@@ -101,9 +124,10 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
   }
   
 // Show and Load layout modal
-  openDialog() {
+  openDialog(): void {
     const dialogRef = this.dialog.open(ColumnVisibilityModalComponent, {
-      width: '400px', // Set the width of the dialog as per your requirement
+      width: '500px',
+      height: '500px', // Set the width of the dialog as per your requirement
       data: { 
         allColumns: this.columns,
         selectedColumns: this.selectedColumns
@@ -111,17 +135,67 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
       disableClose: true
     });
   
-    dialogRef.afterClosed().subscribe((result: string[]) => {
-      if (result) {
-        this.selectedColumns = result; // Assign the result to selectedColumns property
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.selectedColumns = result.selectedCol;  // Assign the result to selectedColumns property
+      const selectedOption: any = result.selectedOption;
+      if (this.selectedColumns) {
         this.displayedColumns = [...this.selectedColumns, 'actionsColumn'];
+        // this.displayedColumns = [...result.defaultColumns];
+        // this.selectedColumns = [...result.defaultColumns];
       }
-      else {
-        this.displayedColumns = [...this.columns];
+      else {        
+        this.displayedColumns = [...this.columns, 'actionsColumn'];
+      }
+      if (selectedOption) {
+        this.displayedColumns = [...selectedOption.defaultColumns,'actionsColumn'];
+        this.selectedColumns = [...selectedOption.defaultColumns];  
       }
     });
   }
 
+  
+  // Save column layout modal
+  // saveLayoutDialog() {
+  //   const dialogRef = this.dialog.open(ColumnsLayoutModalComponent, {
+  //     width: '700px',
+  //     data: {
+  //       modalTitle: 'Save Layout',
+  //       title: 'title',
+  //       action: {saveMode: true, loadMode: false },
+  //       button: 'Save',
+  //       layout: this.savedLayout ={
+  //         title: '',
+  //         defaultLayout: false,
+  //         defaultColumns: this.displayedColumns,
+  //         isDefaultLayout: false
+  //       }
+  //     },
+  //     disableClose: true
+  //   });
+
+  // }
+  
+  // Load column layout modal
+  // loadLayoutDialog() {
+  //   const dialogRef = this.dialog.open(ColumnsLayoutModalComponent, {
+  //     width: '700px',
+  //     data: {
+  //       modalTitle: 'Load Layout',
+  //       title: 'Layout(s)',
+  //       action: {saveMode: false, loadMode: true },
+  //       button: 'Load'
+  //     },
+  //     disableClose: true
+  //   });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result) {
+  //       console.log("load layout ko update karny walyyy columns", result);
+  //       this.displayedColumns = [...result.defaultColumns];
+  //       this.selectedColumns = [...result.defaultColumns];
+  //     }
+  //   });
+  // }
+  
   // Upload File modal
   uploadFileDialog() {
     const dialogRef = this.dialog.open(UploadFileModalComponent, {
@@ -129,49 +203,7 @@ export class TableComponent implements OnChanges, AfterViewInit, OnInit {
     });
   }
 
-  // Save column layout modal
-  saveLayoutDialog() {
-    const dialogRef = this.dialog.open(ColumnsLayoutModalComponent, {
-      width: '700px',
-      data: {
-        modalTitle: 'Save Layout',
-        title: 'title',
-        action: {saveMode: true, loadMode: false },
-        button: 'Save',
-        layout: this.savedLayout ={
-          title: '',
-          defaultLayout: false,
-          defaultColumns: this.displayedColumns,
-          isDefaultLayout: false
-        }
-      },
-      disableClose: true
-    });
-
-  }
-  
-  // Load column layout modal
-  loadLayoutDialog() {
-    const dialogRef = this.dialog.open(ColumnsLayoutModalComponent, {
-      width: '700px',
-      data: {
-        modalTitle: 'Load Layout',
-        title: 'Layout(s)',
-        action: {saveMode: false, loadMode: true },
-        button: 'Load'
-      },
-      disableClose: true
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log("load layout ko update karny walyyy columns", result);
-        this.displayedColumns = [...result.defaultColumns];
-        this.selectedColumns = [...result.defaultColumns];
-      }
-    });
-  }
-  
-// Navigation to add-edit
+  // Navigation to add-edit
   navigateToAddEdit(id: number) {
     const currentRoute = this.router.url;
     const routeParts = currentRoute.split('/');
